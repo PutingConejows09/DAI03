@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doña Alejandra, Inc. — Innovative ICT Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   DAI V4 — MULTISYS-INSPIRED · RED · WHITE
+   ═══════════════════════════════════════════ */
+:root{
+  --red:    #cc1417;
+  --red2:   #e8181b;
+  --red3:   #900e10;
+  --red-lt: #fff0f0;
+  --black:  #111111;
+  --dark:   #1a1a1a;
+  --g900:   #222;
+  --g700:   #444;
+  --g500:   #777;
+  --g300:   #bbb;
+  --g200:   #e0e0e0;
+  --g100:   #f4f4f4;
+  --white:  #ffffff;
+  --off:    #fafafa;
+  --disp:   'Oswald',sans-serif;
+  --body:   'Plus Jakarta Sans',sans-serif;
+  --nav-h:  74px;
+  --ease:   cubic-bezier(.25,.8,.25,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--body);background:var(--white);color:var(--black);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--body);cursor:pointer;border:none;background:none}
+ul{list-style:none}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none}
+.page.active{display:block;animation:pgIn .45s var(--ease) both}
+@keyframes pgIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* ── NAV ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:9000;
+  height:var(--nav-h);
+  background:rgba(255,255,255,.97);
+  border-bottom:4px solid var(--red);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  transition:box-shadow .3s;
+}
+#nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.12)}
+.nav-brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.nav-logomark{width:52px;height:38px;flex-shrink:0}
+.nav-wordmark{line-height:1.1}
+.nav-wm-main{font-family:var(--disp);font-size:19px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black)}
+.nav-wm-sub{font-size:8.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nl{padding:8px 15px;border-radius:7px;font-size:13px;font-weight:600;color:var(--g700);transition:.2s;cursor:pointer}
+.nl:hover,.nl.active{color:var(--red);background:var(--red-lt)}
+.nl-cta{background:var(--red)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:7px;box-shadow:0 4px 16px rgba(204,20,23,.3);transition:.2s!important}
+.nl-cta:hover{background:var(--red3)!important;transform:translateY(-1px);box-shadow:0 7px 22px rgba(204,20,23,.4)!important}
+.hbg{display:none;flex-direction:column;gap:5px;padding:6px;border-radius:6px;cursor:pointer}
+.hbg span{width:22px;height:2px;background:var(--black);display:block;border-radius:2px;transition:.3s}
+.drawer{display:none;position:fixed;inset:0;z-index:8800;background:rgba(17,17,17,.97);flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.drawer.open{display:flex}
+.drawer a{font-family:var(--disp);font-size:44px;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:3px;padding:12px 48px;border-radius:10px;transition:.2s}
+.drawer a:hover{color:var(--red);background:rgba(204,20,23,.08)}
+.drw-x{position:absolute;top:24px;right:5%;color:#fff;font-size:28px;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;transition:.2s}
+.drw-x:hover{background:rgba(255,255,255,.1)}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 32px;border-radius:9px;font-family:var(--disp);font-size:15px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s var(--ease);cursor:pointer;position:relative;overflow:hidden}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-100%);transition:transform .4s}
+.btn:hover::after{transform:translateX(0)}
+.btn .arr{transition:transform .22s}
+.btn:hover .arr{transform:translateX(5px)}
+.btn-red{background:var(--red);color:var(--white);box-shadow:0 5px 20px rgba(204,20,23,.3)}
+.btn-red:hover{background:var(--red3);transform:translateY(-3px);box-shadow:0 12px 36px rgba(204,20,23,.45)}
+.btn-wh{background:var(--white);color:var(--red);box-shadow:0 5px 20px rgba(0,0,0,.12)}
+.btn-wh:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.btn-outline{background:transparent;border:2px solid rgba(255,255,255,.55);color:var(--white)}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.btn-outline-red{background:transparent;border:2px solid var(--red);color:var(--red)}
+.btn-outline-red:hover{background:var(--red);color:var(--white)}
+.btn-blk{background:var(--black);color:var(--white)}
+.btn-blk:hover{background:var(--dark);transform:translateY(-3px)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;overflow:hidden;
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:calc(var(--nav-h)+60px) 5% 0;
+}
+
+/* ── ANIMATED CITY SKYLINE BACKGROUND ── */
+.hero-skyline{
+  position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,#0d1520 0%,#1a2840 35%,#2a3f60 60%,#1e3050 100%);
+  overflow:hidden;
+}
+/* Stars */
+.hero-skyline::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 25% 8%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 20%,rgba(255,255,255,.9) 0%,transparent 100%),
+    radial-gradient(1px 1px at 60% 5%,rgba(255,255,255,.7) 0%,transparent 100%),
+    radial-gradient(1px 1px at 75% 12%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 18%,rgba(255,255,255,.8) 0%,transparent 100%),
+    radial-gradient(1px 1px at 92% 7%,rgba(255,255,255,.6) 0%,transparent 100%),
+    radial-gradient(1px 1px at 5% 30%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 48% 25%,rgba(255,255,255,.5) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 28%,rgba(255,255,255,.7) 0%,transparent 100%);
+  animation:starTwinkle 4s ease-in-out infinite alternate;
+}
+@keyframes starTwinkle{0%{opacity:.7}100%{opacity:1}}
+
+/* Moon glow */
+.hero-skyline::after{
+  content:'';position:absolute;top:8%;right:12%;
+  width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,240,180,.9) 0%,rgba(255,200,80,.4) 40%,transparent 70%);
+  box-shadow:0 0 60px 20px rgba(255,220,100,.15);
+  animation:moonGlow 6s ease-in-out infinite alternate;
+}
+@keyframes moonGlow{0%{box-shadow:0 0 60px 20px rgba(255,220,100,.12)}100%{box-shadow:0 0 90px 35px rgba(255,220,100,.22)}}
+
+/* SVG skyline */
+.skyline-svg{
+  position:absolute;bottom:0;left:0;right:0;
+  width:100%;height:70%;
+}
+
+/* Ground glow */
+.skyline-ground{
+  position:absolute;bottom:0;left:0;right:0;height:6px;
+  background:linear-gradient(90deg,transparent,rgba(204,20,23,.6),rgba(255,100,50,.8),rgba(204,20,23,.6),transparent);
+  animation:groundPulse 3s ease-in-out infinite;
+}
+@keyframes groundPulse{0%,100%{opacity:.6}50%{opacity:1}}
+
+/* Fog/mist layer */
+.skyline-mist{
+  position:absolute;bottom:0;left:0;right:0;height:35%;
+  background:linear-gradient(to top,rgba(13,21,32,.85) 0%,rgba(13,21,32,.4) 50%,transparent 100%);
+}
+
+/* Moving clouds */
+.cloud{
+  position:absolute;border-radius:50px;
+  background:rgba(255,255,255,.04);
+  animation:cloudDrift linear infinite;
+}
+.cloud-1{width:300px;height:60px;top:15%;animation-duration:40s;animation-delay:0s}
+.cloud-2{width:200px;height:40px;top:25%;animation-duration:55s;animation-delay:-20s}
+.cloud-3{width:400px;height:70px;top:10%;animation-duration:70s;animation-delay:-35s}
+@keyframes cloudDrift{from{transform:translateX(-500px)}to{transform:translateX(110vw)}}
+
+/* Color overlay to tint skyline with red brand */
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(105deg,rgba(10,8,8,.88) 0%,rgba(20,10,10,.75) 40%,rgba(10,8,8,.4) 70%,transparent 100%),
+    linear-gradient(to top,rgba(204,20,23,.12) 0%,transparent 40%);
+}
+
+.hero-inner{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;gap:40px;padding-bottom:80px;
+}
+
+/* Left content */
+.hero-left{max-width:640px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(204,20,23,.5);border-radius:100px;
+  padding:7px 20px;background:rgba(204,20,23,.12);
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.9);margin-bottom:28px;
+  animation:fadeSlideUp .8s .1s both;
+}
+.live-dot{width:8px;height:8px;background:var(--red2);border-radius:50%;animation:livePulse 1.5s infinite;flex-shrink:0}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(255,37,40,.7)}60%{box-shadow:0 0 0 10px transparent}}
+
+.hero-title{
+  font-family:var(--disp);
+  font-size:clamp(52px,8vw,110px);
+  font-weight:700;text-transform:uppercase;
+  line-height:.95;letter-spacing:-1px;
+  color:var(--white);margin-bottom:26px;
+}
+.hero-title .line{display:block;overflow:hidden}
+.hero-title .line-in{display:block;animation:lineUp .95s both;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+.hero-title .d1{animation-delay:.15s}
+.hero-title .d2{animation-delay:.3s}
+.hero-title .d3{animation-delay:.45s}
+@keyframes lineUp{from{transform:translateY(110%)}to{transform:translateY(0)}}
+.hero-title .hi-red{color:var(--red2)}
+.hero-title .hi-out{-webkit-text-stroke:2px rgba(255,255,255,.4);color:transparent}
+
+.hero-desc{
+  font-size:17px;line-height:1.85;
+  color:rgba(255,255,255,.65);
+  max-width:520px;margin-bottom:36px;
+  animation:fadeSlideUp .9s .6s both;
+}
+.hero-desc strong{color:var(--white)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeSlideUp .9s .75s both}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* Stat strip inside hero */
+.hero-stats{
+  display:flex;gap:0;margin-top:48px;
+  border-top:1px solid rgba(255,255,255,.12);
+  padding-top:32px;
+  animation:fadeSlideUp 1s .9s both;
+}
+.hs{flex:1;padding-right:28px;border-right:1px solid rgba(255,255,255,.1)}
+.hs:last-child{border-right:none}
+.hs-num{font-family:var(--disp);font-size:44px;font-weight:700;color:var(--red2);line-height:1;display:block}
+.hs-lbl{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:2px;margin-top:5px}
+
+/* Right cards panel */
+.hero-right{
+  display:flex;flex-direction:column;gap:14px;flex-shrink:0;
+  animation:heroRightIn 1s .4s both;
+}
+@keyframes heroRightIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
+.hcard{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:18px 22px;min-width:210px;
+  backdrop-filter:blur(16px);cursor:pointer;transition:.35s;
+  position:relative;overflow:hidden;
+}
+.hcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);transform:scaleY(0);transform-origin:bottom;transition:transform .35s}
+.hcard:hover{background:rgba(255,255,255,.13);border-color:rgba(204,20,23,.45);transform:translateX(-7px)}
+.hcard:hover::before{transform:scaleY(1)}
+.hcard-icon{font-size:22px;margin-bottom:8px}
+.hcard h4{font-family:var(--disp);font-size:14px;font-weight:600;color:var(--white);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.hcard p{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5}
+
+/* Scroll cue */
+.scroll-cue{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:rgba(255,255,255,.3);font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  animation:fadeSlideUp 1s 1.2s both;
+}
+.scroll-line-el{width:1px;height:44px;background:linear-gradient(to bottom,var(--red),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{height:44px;opacity:1}50%{height:18px;opacity:.4}}
+
+/* ── TICKER ── */
+.ticker-wrap{background:var(--red);overflow:hidden;padding:12px 0;position:relative}
+.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--red),transparent)}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--red),transparent)}
+.ticker-track{display:flex;width:max-content;animation:tickerRun 28s linear infinite}
+.ti{display:flex;align-items:center;gap:10px;padding:0 26px;font-family:var(--disp);font-size:13px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.ti-dot{color:rgba(255,255,255,.4);font-size:8px}
+@keyframes tickerRun{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SECTION UTILS ── */
+.section{padding:100px 5%;position:relative}
+.section-sm{padding:70px 5%;position:relative}
+
+/* Triangle floaters — Multisys signature */
+.tri-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.tri-f{position:absolute;animation:triFloat 8s ease-in-out infinite}
+@keyframes triFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-18px) rotate(5deg)}}
+
+/* Eyebrow label */
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.eyebrow-bar{width:30px;height:3px;background:var(--red);border-radius:2px;flex-shrink:0}
+.ew-white{color:rgba(255,255,255,.75)}
+.ew-white .eyebrow-bar{background:rgba(255,255,255,.6)}
+
+/* Section title */
+.s-ttl{font-family:var(--disp);font-size:clamp(34px,5vw,62px);font-weight:700;text-transform:uppercase;letter-spacing:.5px;line-height:1;margin-bottom:18px}
+.s-ttl .r{color:var(--red)}
+.s-ttl .w{color:var(--white)}
+.s-ttl .out{-webkit-text-stroke:2px currentColor;color:transparent}
+.s-desc{font-size:15.5px;line-height:1.88;color:var(--g500);max-width:560px}
+.s-desc-w{color:rgba(255,255,255,.65)}
+
+/* ── SCROLL REVEAL ── */
+[data-anim]{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+[data-anim="left"]{transform:translateX(-36px)}
+[data-anim="right"]{transform:translateX(36px)}
+[data-anim="scale"]{transform:scale(.94)}
+[data-anim].visible{opacity:1;transform:none}
+[data-delay="1"]{transition-delay:.1s}[data-delay="2"]{transition-delay:.2s}
+[data-delay="3"]{transition-delay:.3s}[data-delay="4"]{transition-delay:.4s}
+[data-delay="5"]{transition-delay:.5s}[data-delay="6"]{transition-delay:.6s}
+
+/* ── STAT BAND ── */
+.stat-band{background:var(--black);display:flex;flex-wrap:wrap}
+.sb{flex:1;min-width:160px;padding:54px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden;transition:.3s}
+.sb:last-child{border-right:none}
+.sb::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:.4s}
+.sb:hover::after{transform:scaleX(1)}
+.sb:hover{background:rgba(255,255,255,.03)}
+.sb-n{font-family:var(--disp);font-size:58px;font-weight:700;color:var(--red2);line-height:1;display:block}
+.sb-l{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2.5px;margin-top:8px}
+
+/* ── CARDS ── */
+.card{background:var(--white);border-radius:16px;border:1.5px solid var(--g200);padding:32px;position:relative;overflow:hidden;transition:all .4s var(--ease)}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 55px rgba(0,0,0,.11);border-color:var(--red)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:.4s var(--ease)}
+.card:hover::before{transform:scaleX(1)}
+.card-icon{width:56px;height:56px;border-radius:14px;background:var(--red-lt);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;transition:.35s}
+.card:hover .card-icon{background:var(--red);transform:rotate(-4deg) scale(1.08)}
+.card-num{font-family:var(--disp);font-size:52px;font-weight:700;color:rgba(204,20,23,.07);line-height:1;margin-bottom:8px;transition:.4s}
+.card:hover .card-num{color:rgba(204,20,23,.15)}
+.card h3{font-family:var(--disp);font-size:20px;font-weight:600;text-transform:uppercase;color:var(--black);margin-bottom:10px;letter-spacing:.5px}
+.card p{font-size:14px;color:var(--g500);line-height:1.8}
+.card-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--disp);font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-top:16px;transition:.22s}
+.card-link:hover{gap:11px}
+
+/* ── INDUSTRY CARDS ── */
+.ind{position:relative;border-radius:16px;overflow:hidden;height:300px;cursor:pointer}
+.ind-bg{position:absolute;inset:0;transition:transform .55s var(--ease)}
+.ind:hover .ind-bg{transform:scale(1.07)}
+.ind-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.2) 55%,transparent);transition:.4s}
+.ind:hover .ind-ov{background:linear-gradient(to top,rgba(204,20,23,.8) 0%,rgba(204,20,23,.18) 55%,transparent)}
+.ind-body{position:absolute;bottom:0;left:0;right:0;padding:28px}
+.ind-tag{display:inline-block;background:var(--red);color:var(--white);font-family:var(--disp);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:4px 13px;border-radius:100px;margin-bottom:10px;transform:translateY(8px);opacity:0;transition:.35s .1s}
+.ind:hover .ind-tag{transform:none;opacity:1}
+.ind-body h3{font-family:var(--disp);font-size:26px;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:4px;letter-spacing:.5px}
+.ind-body p{font-size:13px;color:rgba(255,255,255,.72);line-height:1.6}
+
+/* ── PHOTO BLOCKS ── */
+.photo{border-radius:16px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.ph-dark{background:linear-gradient(135deg,#111,#1e1e1e)}
+.ph-red{background:linear-gradient(135deg,#700,var(--red))}
+.ph-gray{background:linear-gradient(135deg,#333,#555)}
+.ph-mid{background:linear-gradient(135deg,#1a1a2e,#2d1b1b)}
+.ph-navy{background:linear-gradient(135deg,#0d1520,#1a2840)}
+.ph-ico{font-size:54px;opacity:.22;position:relative;z-index:1}
+.ph-lbl{position:relative;z-index:1;font-family:var(--disp);font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);padding:5px 14px;border-radius:100px}
+.ph-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent);padding:20px;z-index:2}
+.ph-cap h4{font-family:var(--disp);font-size:16px;font-weight:600;text-transform:uppercase;color:var(--white);letter-spacing:.5px;margin-bottom:2px}
+.ph-cap p{font-size:11px;color:rgba(255,255,255,.6)}
+
+/* ── FEATURE ROWS ── */
+.frow{display:flex;align-items:center;gap:80px;padding:70px 0;border-bottom:1px solid var(--g200)}
+.frow:last-child{border-bottom:none;padding-bottom:0}
+.frow.flip{flex-direction:row-reverse}
+.frow-text{flex:1}
+.frow-text h3{font-family:var(--disp);font-size:clamp(28px,3.5vw,44px);font-weight:700;text-transform:uppercase;line-height:1;margin-bottom:14px;letter-spacing:.5px}
+.frow-text p{font-size:15px;color:var(--g500);line-height:1.88;margin-bottom:22px}
+.frow-img{flex:1;border-radius:16px;overflow:hidden;min-height:340px;position:relative}
+.badges{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:24px}
+.badge{font-family:var(--disp);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+.badge-r{background:rgba(204,20,23,.1);color:var(--red)}
+.badge-k{background:var(--g100);color:var(--g700)}
+
+/* ── PARTNER LOGOS ── */
+.pl-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px}
+.pl{background:var(--white);border:1.5px solid var(--g200);border-radius:10px;padding:14px 22px;font-family:var(--disp);font-size:13px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:var(--g500);transition:.3s;min-width:120px;text-align:center}
+.pl:hover{border-color:var(--red);color:var(--red);transform:translateY(-4px);box-shadow:0 8px 24px rgba(204,20,23,.12)}
+
+/* ── TESTIMONIAL SLIDER ── */
+.testi-wrap{overflow:hidden;position:relative}
+.testi-track{display:flex;gap:24px;transition:transform .5s var(--ease)}
+.testi-card{background:var(--white);border-radius:16px;border:1.5px solid var(--g200);padding:32px;min-width:340px;flex-shrink:0;transition:.35s}
+.testi-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.1);border-color:var(--red)}
+.testi-quote{font-size:36px;color:var(--red);font-family:Georgia,serif;line-height:1;margin-bottom:12px}
+.testi-text{font-size:14px;color:var(--g700);line-height:1.82;margin-bottom:20px;font-style:italic}
+.testi-person{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;background:var(--g200);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+.testi-name{font-family:var(--disp);font-size:14px;font-weight:600;text-transform:uppercase;color:var(--black);letter-spacing:.3px}
+.testi-role{font-size:12px;color:var(--g500);margin-top:2px}
+.testi-nav{display:flex;gap:10px;justify-content:center;margin-top:28px}
+.testi-dot{width:10px;height:10px;border-radius:50%;background:var(--g200);cursor:pointer;transition:.3s}
+.testi-dot.on{background:var(--red);transform:scale(1.3)}
+.testi-arrows{display:flex;gap:10px;justify-content:flex-end;margin-bottom:16px}
+.testi-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--g200);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s;font-size:16px}
+.testi-btn:hover{border-color:var(--red);background:var(--red);color:var(--white)}
+
+/* ── NEWS ── */
+.nc{background:var(--white);border-radius:16px;border:1.5px solid var(--g200);overflow:hidden;transition:.4s var(--ease);cursor:pointer}
+.nc:hover{transform:translateY(-7px);box-shadow:0 22px 55px rgba(0,0,0,.1);border-color:var(--red)}
+.nc-img{height:200px;position:relative;overflow:hidden}
+.nc-img-sm{height:165px}
+.nc-tag{display:inline-block;font-family:var(--disp);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:11px}
+.nt-r{background:var(--red-lt);color:var(--red)}
+.nt-k{background:var(--g100);color:var(--g700)}
+.nc-body{padding:24px}
+.nc-body h3{font-family:var(--disp);font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.3px;line-height:1.25;margin-bottom:10px}
+.nc-body p{font-size:13px;color:var(--g500);line-height:1.75}
+.nc-date{font-size:11px;color:var(--g500);margin-top:14px;display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:.5px}
+.nc-date::before{content:'';width:14px;height:2px;background:var(--red);display:inline-block}
+
+/* ── TIMELINE ── */
+.timeline{padding-left:48px;position:relative;max-width:620px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--red),rgba(204,20,23,.1));border-radius:2px}
+.tl{position:relative;margin-bottom:44px}
+.tl:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-44px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--white);border:3px solid var(--red);box-shadow:0 0 0 5px rgba(204,20,23,.1);transition:.35s}
+.tl:hover .tl-dot{background:var(--red);box-shadow:0 0 0 8px rgba(204,20,23,.12)}
+.tl-yr{font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:6px}
+.tl h4{font-family:var(--disp);font-size:19px;font-weight:600;text-transform:uppercase;color:var(--black);margin-bottom:7px;letter-spacing:.3px}
+.tl p{font-size:14px;color:var(--g500);line-height:1.82}
+
+/* ── TEAM ── */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:20px}
+.tcard{background:var(--white);border:1.5px solid var(--g200);border-radius:16px;overflow:hidden;text-align:center;transition:.4s var(--ease)}
+.tcard:hover{transform:translateY(-7px);box-shadow:0 20px 50px rgba(0,0,0,.1);border-color:var(--red)}
+.tcard-photo{height:200px;position:relative;overflow:hidden}
+.tcard-body{padding:16px 12px}
+.tcard-body h4{font-family:var(--disp);font-size:15px;font-weight:600;text-transform:uppercase;color:var(--black);margin-bottom:3px;letter-spacing:.3px}
+.tcard-body p{font-size:11px;color:var(--red);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+
+/* ── VALUES ── */
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.val{background:var(--g100);border-radius:14px;padding:32px 24px;transition:.4s;border-bottom:4px solid transparent}
+.val:hover{border-bottom-color:var(--red);background:var(--white);box-shadow:0 18px 48px rgba(0,0,0,.1);transform:translateY(-5px)}
+.val-ico{font-size:38px;margin-bottom:16px}
+.val h4{font-family:var(--disp);font-size:20px;font-weight:700;text-transform:uppercase;color:var(--black);margin-bottom:9px;letter-spacing:.5px}
+.val p{font-size:14px;color:var(--g500);line-height:1.78}
+
+/* ── CULTURE ── */
+.cult-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:18px}
+.cult{background:var(--white);border:1.5px solid var(--g200);border-radius:13px;padding:26px 20px;text-align:center;transition:.35s}
+.cult:hover{border-color:var(--red);box-shadow:0 10px 32px rgba(204,20,23,.1);transform:translateY(-4px)}
+.cult-ico{font-size:32px;margin-bottom:12px}
+.cult h4{font-family:var(--disp);font-size:15px;font-weight:600;text-transform:uppercase;color:var(--black);margin-bottom:7px;letter-spacing:.3px}
+.cult p{font-size:13px;color:var(--g500);line-height:1.7}
+
+/* ── JOBS ── */
+.job-list{display:flex;flex-direction:column;gap:12px}
+.job{background:var(--white);border:1.5px solid var(--g200);border-radius:13px;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;transition:.35s}
+.job:hover{border-color:var(--red);box-shadow:0 10px 36px rgba(0,0,0,.08);transform:translateX(6px)}
+.job h3{font-family:var(--disp);font-size:18px;font-weight:600;text-transform:uppercase;color:var(--black);letter-spacing:.3px;margin-bottom:8px}
+.jmeta{display:flex;gap:9px;flex-wrap:wrap}
+.jb{font-family:var(--disp);font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:4px 13px;border-radius:100px}
+.jb-r{background:var(--red-lt);color:var(--red)}
+.jb-k{background:var(--g100);color:var(--g700)}
+.jb-g{background:#e6f9ef;color:#0d8048}
+
+/* ── CERT ── */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:16px}
+.cert{background:var(--white);border:2px solid var(--g200);border-radius:13px;padding:26px 16px;text-align:center;transition:.35s}
+.cert:hover{border-color:var(--red);box-shadow:0 8px 26px rgba(204,20,23,.1)}
+.cert-ico{font-size:34px;margin-bottom:11px}
+.cert h4{font-family:var(--disp);font-size:14px;font-weight:600;text-transform:uppercase;color:var(--black);margin-bottom:4px;letter-spacing:.3px}
+.cert p{font-size:11px;color:var(--g500)}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--black);padding:96px 5%;text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(204,20,23,.2),transparent);pointer-events:none}
+.cta-band h2{font-family:var(--disp);font-size:clamp(34px,6vw,70px);font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:16px;line-height:.97}
+.cta-band h2 .r{color:var(--red2)}
+.cta-band h2 .out{-webkit-text-stroke:2px rgba(255,255,255,.28);color:transparent}
+.cta-band p{font-size:16px;color:rgba(255,255,255,.6);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8}
+
+/* ── CONTACT ── */
+.ct-panel{background:var(--black);border-radius:18px;padding:44px;position:relative;overflow:hidden;height:100%}
+.ct-detail{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}
+.ct-ico{width:44px;height:44px;background:rgba(204,20,23,.15);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ct-detail h4{font-family:var(--disp);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:5px;font-weight:600}
+.ct-detail p,.ct-detail a{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;text-decoration:none;transition:.2s}
+.ct-detail a:hover{color:var(--red)}
+.ct-form{background:var(--g100);border-radius:18px;padding:44px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg-full{grid-column:1/-1}
+.fgrp{display:flex;flex-direction:column;gap:7px}
+.fgrp label{font-family:var(--disp);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--g700)}
+.fgrp input,.fgrp select,.fgrp textarea{padding:13px 16px;border-radius:10px;border:1.5px solid var(--g200);font-family:var(--body);font-size:14px;color:var(--black);background:var(--white);outline:none;transition:.2s}
+.fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(204,20,23,.09)}
+.fgrp textarea{resize:vertical;min-height:115px}
+.f-sub{background:var(--red);color:var(--white);border:none;padding:15px 36px;border-radius:10px;cursor:pointer;font-family:var(--disp);font-size:15px;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:.3s;box-shadow:0 5px 20px rgba(204,20,23,.28);width:100%;margin-top:6px}
+.f-sub:hover{background:var(--red3);transform:translateY(-2px);box-shadow:0 10px 32px rgba(204,20,23,.4)}
+
+/* ── PAGE HERO ── */
+.ph{position:relative;overflow:hidden;padding:calc(var(--nav-h)+70px) 5% 90px;background:var(--black)}
+.ph-bg{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 75% 65% at 80% 50%,rgba(204,20,23,.18),transparent 62%),
+  repeating-linear-gradient(-52deg,transparent,transparent 55px,rgba(255,255,255,.012) 55px,rgba(255,255,255,.012) 56px),
+  var(--black)
+}
+/* Triangle floaters in page heroes */
+.ph-tri{position:absolute;width:0;height:0;pointer-events:none;animation:triFloat 9s ease-in-out infinite}
+.ph-t1{border-left:70px solid transparent;border-right:70px solid transparent;border-bottom:120px solid rgba(204,20,23,.18);right:9%;top:8%;animation-delay:0s}
+.ph-t2{border-left:35px solid transparent;border-right:35px solid transparent;border-bottom:60px solid rgba(255,255,255,.04);left:4%;bottom:18%;animation-delay:-3s}
+.ph-t3{border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:44px solid rgba(204,20,23,.1);left:50%;top:14%;animation-delay:-5.5s}
+.ph-inner{position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:20px;font-weight:600;letter-spacing:.5px}
+.breadcrumb span{color:var(--red)}
+.ph-ttl{font-family:var(--disp);font-size:clamp(48px,8vw,88px);font-weight:700;text-transform:uppercase;line-height:.97;color:var(--white);margin-bottom:18px;letter-spacing:.5px}
+.ph-ttl .r{color:var(--red2)}
+.ph-ttl .out{-webkit-text-stroke:2px rgba(255,255,255,.25);color:transparent}
+.ph-sub{font-size:17px;color:rgba(255,255,255,.62);max-width:580px;line-height:1.82}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:70px 5% 34px;border-top:4px solid var(--red)}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:52px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.06)}
+.ft-brand p{font-size:13px;color:rgba(255,255,255,.38);line-height:1.82;margin:16px 0 24px;max-width:275px}
+.ft-soc{display:flex;gap:10px}
+.ft-s{width:38px;height:38px;border-radius:9px;border:1.5px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:15px;color:rgba(255,255,255,.4);transition:.22s;text-decoration:none}
+.ft-s:hover{border-color:var(--red);color:var(--red);background:rgba(204,20,23,.08)}
+.ft-col h4{font-family:var(--disp);font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--red);font-weight:600;margin-bottom:18px}
+.ft-col ul{display:flex;flex-direction:column;gap:10px}
+.ft-col ul a{font-size:13px;color:rgba(255,255,255,.38);transition:.2s}
+.ft-col ul a:hover{color:rgba(255,255,255,.9);padding-left:6px}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.ft-bottom p{font-size:12px;color:rgba(255,255,255,.22)}
+.ft-bottom a{color:var(--red);text-decoration:none}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+
+/* ── BG HELPERS ── */
+.bg-w{background:var(--white)}
+.bg-off{background:var(--off)}
+.bg-g{background:var(--g100)}
+.bg-b{background:var(--black)}
+.bg-r{background:var(--red)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero-right{display:none}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:34px}
+  .val-grid{grid-template-columns:1fr 1fr}
+  .g4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .g2,.g3{grid-template-columns:1fr}
+  .frow,.frow.flip{flex-direction:column;gap:38px}
+  .nav-links{display:none}
+  .hbg{display:flex}
+  .ft-grid{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+  .stat-band{flex-direction:column}
+  .sb{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);max-width:100%}
+  .val-grid,.g4{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){
+  .section{padding:70px 5%}
+  .hero{padding:calc(var(--nav-h)+36px) 5% 0}
+  .hero-inner{padding-bottom:60px}
+  .val-grid,.g4{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column}
+  .btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <button class="drw-x" onclick="closeDrawer()">✕</button>
+  <a href="#" onclick="goPage('home');closeDrawer()">Home</a>
+  <a href="#" onclick="goPage('about');closeDrawer()">Who We Are</a>
+  <a href="#" onclick="goPage('solutions');closeDrawer()">Solutions</a>
+  <a href="#" onclick="goPage('careers');closeDrawer()">Careers</a>
+  <a href="#" onclick="goPage('news');closeDrawer()">News</a>
+  <a href="#" onclick="goPage('contact');closeDrawer()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand" onclick="goPage('home')">
+    <!-- DAI logo SVG -->
+    <svg class="nav-logomark" viewBox="0 0 110 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 76 L22 8 Q27 0 40 0 Q53 0 58 8 L78 76 L60 76 L56 60 L24 60 L20 76 Z" fill="#cc1417"/>
+      <path d="M28 47 L52 47 L40 7 Z" fill="#fff"/>
+      <rect x="88" y="24" width="11" height="52" rx="5.5" fill="#111111"/>
+      <circle cx="93.5" cy="11" r="9" fill="#cc1417"/>
+    </svg>
+    <div class="nav-wordmark">
+      <div class="nav-wm-main">Doña Alejandra, Inc.</div>
+      <div class="nav-wm-sub">Towards Transparency, Accountability &amp; Good Governance</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a class="nl active" id="nl-home" href="#" onclick="goPage('home')">Home</a>
+    <a class="nl" id="nl-about" href="#" onclick="goPage('about')">Who We Are</a>
+    <a class="nl" id="nl-solutions" href="#" onclick="goPage('solutions')">Solutions</a>
+    <a class="nl" id="nl-careers" href="#" onclick="goPage('careers')">Careers</a>
+    <a class="nl" id="nl-news" href="#" onclick="goPage('news')">News</a>
+    <a class="nl nl-cta" id="nl-contact" href="#" onclick="goPage('contact')">Contact Us</a>
+  </div>
+  <div class="hbg" onclick="openDrawer()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HOME PAGE
+════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- ── HERO WITH ANIMATED CITY SKYLINE ── -->
+  <section class="hero">
+
+    <!-- Animated city skyline background -->
+    <div class="hero-skyline">
+      <!-- Moving clouds -->
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+
+      <!-- City skyline SVG — animated windows, animated crane, etc. -->
+      <svg class="skyline-svg" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="bldG1" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#2a3f60"/><stop offset="100%" stop-color="#1a2840"/></linearGradient>
+          <linearGradient id="bldG2" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#1e3252"/><stop offset="100%" stop-color="#162640"/></linearGradient>
+          <linearGradient id="bldG3" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#243650"/><stop offset="100%" stop-color="#1a2a44"/></linearGradient>
+          <!-- Window glow filter -->
+          <filter id="winGlow"><feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        <!-- FAR BACKGROUND buildings (darkest) -->
+        <rect x="0" y="300" width="1440" height="200" fill="#0d1520"/>
+        <!-- BG building silhouettes -->
+        <rect x="20" y="220" width="60" height="280" fill="#1a2438"/>
+        <rect x="90" y="250" width="40" height="250" fill="#16203a"/>
+        <rect x="140" y="180" width="50" height="320" fill="#1a2438"/>
+        <rect x="200" y="260" width="80" height="240" fill="#16203a"/>
+        <rect x="290" y="200" width="45" height="300" fill="#1a2438"/>
+        <rect x="345" y="240" width="70" height="260" fill="#16203a"/>
+        <rect x="430" y="190" width="55" height="310" fill="#1a2438"/>
+        <rect x="500" y="220" width="90" height="280" fill="#16203a"/>
+        <rect x="600" y="170" width="60" height="330" fill="#1a2438"/>
+        <rect x="670" y="250" width="50" height="250" fill="#16203a"/>
+        <rect x="730" y="200" width="75" height="300" fill="#1a2438"/>
+        <rect x="820" y="230" width="55" height="270" fill="#16203a"/>
+        <rect x="890" y="195" width="65" height="305" fill="#1a2438"/>
+        <rect x="970" y="260" width="80" height="240" fill="#16203a"/>
+        <rect x="1060" y="215" width="50" height="285" fill="#1a2438"/>
+        <rect x="1120" y="240" width="70" height="260" fill="#16203a"/>
+        <rect x="1200" y="185" width="55" height="315" fill="#1a2438"/>
+        <rect x="1265" y="255" width="90" height="245" fill="#16203a"/>
+        <rect x="1365" y="210" width="75" height="290" fill="#1a2438"/>
+
+        <!-- MID-GROUND — main tall buildings -->
+        <!-- Building 1 — tall center-left -->
+        <rect x="60" y="100" width="100" height="400" fill="url(#bldG1)"/>
+        <rect x="90" y="80" width="40" height="30" fill="#243656"/><!-- antenna base -->
+        <rect x="107" y="50" width="6" height="40" fill="#1e3050"/><!-- antenna -->
+        <!-- Windows on building 1 -->
+        <g filter="url(#winGlow)" opacity=".85">
+          <rect x="70" y="120" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="3.1s" begin="0s" repeatCount="indefinite"/></rect>
+          <rect x="90" y="120" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".4;1;.4" dur="2.4s" begin=".5s" repeatCount="indefinite"/></rect>
+          <rect x="110" y="120" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.2;1" dur="4s" begin="1s" repeatCount="indefinite"/></rect>
+          <rect x="130" y="120" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".5;1;.5" dur="3.5s" begin=".2s" repeatCount="indefinite"/></rect>
+          <rect x="70" y="145" width="14" height="10" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.4;1" dur="2.7s" begin=".8s" repeatCount="indefinite"/></rect>
+          <rect x="90" y="145" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".3;1;.3" dur="3.8s" begin="0s" repeatCount="indefinite"/></rect>
+          <rect x="110" y="145" width="14" height="10" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.5;1" dur="2.2s" begin="1.5s" repeatCount="indefinite"/></rect>
+          <rect x="130" y="145" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".6;1;.6" dur="4.1s" begin=".3s" repeatCount="indefinite"/></rect>
+          <rect x="70" y="170" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.2;1" dur="3.3s" begin=".7s" repeatCount="indefinite"/></rect>
+          <rect x="90" y="170" width="14" height="10" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".5;1;.5" dur="2.9s" begin="1.2s" repeatCount="indefinite"/></rect>
+          <rect x="110" y="170" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.4;1" dur="3.6s" begin=".1s" repeatCount="indefinite"/></rect>
+          <rect x="130" y="170" width="14" height="10" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".7;1;.7" dur="2.5s" begin=".9s" repeatCount="indefinite"/></rect>
+        </g>
+
+        <!-- Building 2 — skyscraper right -->
+        <rect x="1200" y="80" width="130" height="420" fill="url(#bldG2)"/>
+        <rect x="1240" y="60" width="50" height="28" fill="#1e3050"/>
+        <rect x="1262" y="30" width="6" height="38" fill="#1e3050"/>
+        <circle cx="1265" cy="28" r="4" fill="#cc1417" opacity=".8"><animate attributeName="opacity" values=".8;.2;.8" dur="1s" repeatCount="indefinite"/></circle>
+        <g filter="url(#winGlow)" opacity=".85">
+          <rect x="1210" y="100" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="2.8s" begin=".4s" repeatCount="indefinite"/></rect>
+          <rect x="1232" y="100" width="15" height="11" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".4;1;.4" dur="3.2s" begin="0s" repeatCount="indefinite"/></rect>
+          <rect x="1254" y="100" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.5;1" dur="2.4s" begin="1.1s" repeatCount="indefinite"/></rect>
+          <rect x="1276" y="100" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".6;1;.6" dur="3.8s" begin=".7s" repeatCount="indefinite"/></rect>
+          <rect x="1298" y="100" width="15" height="11" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.2;1" dur="2.6s" begin="1.4s" repeatCount="indefinite"/></rect>
+          <rect x="1210" y="125" width="15" height="11" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".5;1;.5" dur="4s" begin=".2s" repeatCount="indefinite"/></rect>
+          <rect x="1232" y="125" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="3.1s" begin=".9s" repeatCount="indefinite"/></rect>
+          <rect x="1254" y="125" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".4;.9;.4" dur="2.7s" begin="1.6s" repeatCount="indefinite"/></rect>
+          <rect x="1276" y="125" width="15" height="11" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.4;1" dur="3.5s" begin=".5s" repeatCount="indefinite"/></rect>
+          <rect x="1298" y="125" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".7;1;.7" dur="2.3s" begin="1.8s" repeatCount="indefinite"/></rect>
+          <rect x="1210" y="150" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.2;1" dur="3.9s" begin=".6s" repeatCount="indefinite"/></rect>
+          <rect x="1232" y="150" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".3;1;.3" dur="2.9s" begin="1.3s" repeatCount="indefinite"/></rect>
+          <rect x="1254" y="150" width="15" height="11" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.5;1" dur="3.4s" begin=".1s" repeatCount="indefinite"/></rect>
+          <rect x="1276" y="150" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".8;1;.8" dur="2.1s" begin="1.7s" repeatCount="indefinite"/></rect>
+          <rect x="1298" y="150" width="15" height="11" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="3.7s" begin=".3s" repeatCount="indefinite"/></rect>
+        </g>
+
+        <!-- Building 3 — wide mid -->
+        <rect x="580" y="160" width="200" height="340" fill="url(#bldG3)"/>
+        <!-- Grid windows -->
+        <g filter="url(#winGlow)" opacity=".8">
+          <rect x="595" y="175" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="3.2s" begin=".6s" repeatCount="indefinite"/></rect>
+          <rect x="614" y="175" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".5;1;.5" dur="2.5s" begin="1.1s" repeatCount="indefinite"/></rect>
+          <rect x="633" y="175" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.4;1" dur="3.7s" begin=".2s" repeatCount="indefinite"/></rect>
+          <rect x="652" y="175" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".4;1;.4" dur="2.8s" begin=".8s" repeatCount="indefinite"/></rect>
+          <rect x="671" y="175" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.2;1" dur="3.4s" begin="1.4s" repeatCount="indefinite"/></rect>
+          <rect x="690" y="175" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".6;1;.6" dur="2.2s" begin=".4s" repeatCount="indefinite"/></rect>
+          <rect x="709" y="175" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.5;1" dur="4.1s" begin="1.9s" repeatCount="indefinite"/></rect>
+          <rect x="728" y="175" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".3;1;.3" dur="3.6s" begin=".1s" repeatCount="indefinite"/></rect>
+          <rect x="747" y="175" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.4;1" dur="2.6s" begin="1.2s" repeatCount="indefinite"/></rect>
+          <!-- row 2 -->
+          <rect x="595" y="198" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".4;1;.4" dur="3.1s" begin=".9s" repeatCount="indefinite"/></rect>
+          <rect x="614" y="198" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="2.7s" begin="1.6s" repeatCount="indefinite"/></rect>
+          <rect x="633" y="198" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".5;1;.5" dur="3.9s" begin=".3s" repeatCount="indefinite"/></rect>
+          <rect x="652" y="198" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" begin="1.7s" repeatCount="indefinite"/></rect>
+          <rect x="671" y="198" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".7;1;.7" dur="3.3s" begin=".5s" repeatCount="indefinite"/></rect>
+          <rect x="690" y="198" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.4;1" dur="2.9s" begin="1.3s" repeatCount="indefinite"/></rect>
+          <rect x="709" y="198" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".3;.9;.3" dur="4.2s" begin=".7s" repeatCount="indefinite"/></rect>
+          <rect x="728" y="198" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.5;1" dur="2.3s" begin="1.1s" repeatCount="indefinite"/></rect>
+          <rect x="747" y="198" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".6;1;.6" dur="3.5s" begin=".2s" repeatCount="indefinite"/></rect>
+        </g>
+
+        <!-- Building 4 — medium left-center -->
+        <rect x="310" y="190" width="85" height="310" fill="url(#bldG2)"/>
+        <g filter="url(#winGlow)" opacity=".8">
+          <rect x="320" y="205" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="2.6s" begin=".4s" repeatCount="indefinite"/></rect>
+          <rect x="339" y="205" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".5;1;.5" dur="3.4s" begin="1s" repeatCount="indefinite"/></rect>
+          <rect x="358" y="205" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.4;1" dur="2.9s" begin=".7s" repeatCount="indefinite"/></rect>
+          <rect x="377" y="205" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".4;1;.4" dur="3.8s" begin="1.5s" repeatCount="indefinite"/></rect>
+          <rect x="320" y="228" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.2;1" dur="4.1s" begin=".2s" repeatCount="indefinite"/></rect>
+          <rect x="339" y="228" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".6;1;.6" dur="2.4s" begin="1.3s" repeatCount="indefinite"/></rect>
+          <rect x="358" y="228" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.5;1" dur="3.2s" begin=".9s" repeatCount="indefinite"/></rect>
+          <rect x="377" y="228" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".3;1;.3" dur="2.7s" begin="1.8s" repeatCount="indefinite"/></rect>
+        </g>
+
+        <!-- Building 5 — medium right-center -->
+        <rect x="1000" y="170" width="90" height="330" fill="url(#bldG1)"/>
+        <g filter="url(#winGlow)" opacity=".8">
+          <rect x="1010" y="185" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.3;1" dur="3.1s" begin=".6s" repeatCount="indefinite"/></rect>
+          <rect x="1029" y="185" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".5;1;.5" dur="2.5s" begin="1.2s" repeatCount="indefinite"/></rect>
+          <rect x="1048" y="185" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.4;1" dur="3.8s" begin=".3s" repeatCount="indefinite"/></rect>
+          <rect x="1067" y="185" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".4;1;.4" dur="2.2s" begin="1.7s" repeatCount="indefinite"/></rect>
+          <rect x="1010" y="208" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values="1;.2;1" dur="4.2s" begin=".1s" repeatCount="indefinite"/></rect>
+          <rect x="1029" y="208" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values=".7;1;.7" dur="3.5s" begin=".8s" repeatCount="indefinite"/></rect>
+          <rect x="1048" y="208" width="13" height="9" rx="1" fill="#ffe98a"><animate attributeName="opacity" values="1;.5;1" dur="2.8s" begin="1.4s" repeatCount="indefinite"/></rect>
+          <rect x="1067" y="208" width="13" height="9" rx="1" fill="#c8e6ff"><animate attributeName="opacity" values=".3;.9;.3" dur="3.3s" begin=".5s" repeatCount="indefinite"/></rect>
+        </g>
+
+        <!-- Animated construction crane right side -->
+        <g transform="translate(1150,0)">
+          <!-- Crane tower -->
+          <rect x="0" y="200" width="8" height="300" fill="#1e3050"/>
+          <!-- Crane arm -->
+          <rect x="-80" y="195" width="170" height="6" fill="#243656"/>
+          <!-- Crane cable + hook — swinging animation -->
+          <g><animateTransform attributeName="transform" type="rotate" values="-5 80 200; 5 80 200; -5 80 200" dur="4s" repeatCount="indefinite"/>
+            <line x1="60" y1="201" x2="60" y2="250" stroke="#3a5070" stroke-width="1.5"/>
+            <circle cx="60" cy="253" r="4" fill="#3a5070"/>
+          </g>
+          <!-- Counterweight -->
+          <rect x="-85" y="192" width="20" height="16" rx="2" fill="#1e3050"/>
+        </g>
+
+        <!-- Road / ground level -->
+        <rect x="0" y="470" width="1440" height="30" fill="#0d1520"/>
+        <!-- Road markings -->
+        <rect x="0" y="480" width="1440" height="2" fill="rgba(255,200,50,.15)"/>
+        <rect x="100" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="280" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="460" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="640" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="820" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="1000" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="1180" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <rect x="1360" y="480" width="60" height="2" fill="rgba(255,255,255,.06)"/>
+        <!-- Moving cars -->
+        <g opacity=".7"><animateTransform attributeName="transform" type="translate" values="-200 0; 1640 0" dur="12s" repeatCount="indefinite" begin="0s"/>
+          <rect x="0" y="465" width="40" height="14" rx="3" fill="#cc1417"/>
+          <rect x="8" y="460" width="24" height="10" rx="2" fill="#e03020" opacity=".7"/>
+        </g>
+        <g opacity=".6"><animateTransform attributeName="transform" type="translate" values="-200 0; 1640 0" dur="18s" repeatCount="indefinite" begin="-8s"/>
+          <rect x="0" y="464" width="36" height="13" rx="3" fill="#fff5c0" opacity=".8"/>
+          <rect x="5" y="459" width="22" height="9" rx="2" fill="#ffe0a0" opacity=".6"/>
+        </g>
+        <g opacity=".7"><animateTransform attributeName="transform" type="translate" values="1640 0; -200 0" dur="15s" repeatCount="indefinite" begin="-3s"/>
+          <rect x="0" y="468" width="38" height="12" rx="3" fill="#204080" opacity=".9"/>
+          <rect x="6" y="463" width="22" height="8" rx="2" fill="#3060b0" opacity=".6"/>
+        </g>
+
+        <!-- Red warning light blinking on buildings -->
+        <circle cx="110" cy="48" r="3" fill="#cc1417"><animate attributeName="opacity" values=".9;.1;.9" dur="1.2s" repeatCount="indefinite"/></circle>
+        <circle cx="680" cy="155" r="3" fill="#cc1417"><animate attributeName="opacity" values=".9;.1;.9" dur="1.4s" begin=".6s" repeatCount="indefinite"/></circle>
+      </svg>
+
+      <!-- Ground glow -->
+      <div class="skyline-ground"></div>
+      <!-- Mist fade -->
+      <div class="skyline-mist"></div>
+    </div>
+
+    <!-- Color overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Hero content -->
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag"><span class="live-dot"></span> Est. 2007 &nbsp;·&nbsp; Quezon City, Philippines</div>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-in d1 hi-out">The Philippines'</span></span>
+          <span class="line"><span class="line-in d2">Leading <span class="hi-red">ICT</span></span></span>
+          <span class="line"><span class="line-in d3">Solutions Provider</span></span>
+        </h1>
+        <p class="hero-desc">
+          <strong>Doña Alejandra, Inc.</strong> is a trusted provider of innovative ICT solutions — delivering software, cybersecurity, cloud hosting, and hardware to empower businesses and government across the Philippines, committed to <strong>transparency, accountability, and good governance</strong> since 2007.
+        </p>
+        <div class="hero-btns">
+          <button class="btn btn-red" onclick="goPage('solutions')">Explore Solutions <span class="arr">→</span></button>
+          <button class="btn btn-outline" onclick="goPage('contact')">Let's Work Together</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hs"><span class="hs-num" data-count="17" data-suf="+">17+</span><div class="hs-lbl">Years in Business</div></div>
+          <div class="hs"><span class="hs-num" data-count="8">8</span><div class="hs-lbl">Core Services</div></div>
+          <div class="hs"><span class="hs-num">QC</span><div class="hs-lbl">Quezon City HQ</div></div>
+          <div class="hs"><span class="hs-num">PH</span><div class="hs-lbl">Proudly Filipino</div></div>
+        </div>
+      </div>
+
+      <!-- Right floating service cards -->
+      <div class="hero-right">
+        <div class="hcard"><div class="hcard-icon">💻</div><h4>Software Dev</h4><p>Custom-built systems for your business</p></div>
+        <div class="hcard"><div class="hcard-icon">🛡️</div><h4>Cybersecurity</h4><p>Full-spectrum digital protection</p></div>
+        <div class="hcard"><div class="hcard-icon">☁️</div><h4>CloudPH</h4><p>PH-based managed cloud hosting</p></div>
+        <div class="hcard"><div class="hcard-icon">📺</div><h4>LED Walls</h4><p>Indoor &amp; outdoor installation</p></div>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><div class="scroll-line-el"></div><span>Scroll Down</span></div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <div class="ti">Software Development<span class="ti-dot">◆</span></div>
+      <div class="ti">Cybersecurity Solutions<span class="ti-dot">◆</span></div>
+      <div class="ti">CloudPH Managed Hosting<span class="ti-dot">◆</span></div>
+      <div class="ti">LED Walls<span class="ti-dot">◆</span></div>
+      <div class="ti">Interactive Kiosks<span class="ti-dot">◆</span></div>
+      <div class="ti">Smart Boards<span class="ti-dot">◆</span></div>
+      <div class="ti">Biometric Systems<span class="ti-dot">◆</span></div>
+      <div class="ti">Da Vinci Toner &amp; Ink<span class="ti-dot">◆</span></div>
+      <div class="ti">Software Development<span class="ti-dot">◆</span></div>
+      <div class="ti">Cybersecurity Solutions<span class="ti-dot">◆</span></div>
+      <div class="ti">CloudPH Managed Hosting<span class="ti-dot">◆</span></div>
+      <div class="ti">LED Walls<span class="ti-dot">◆</span></div>
+      <div class="ti">Interactive Kiosks<span class="ti-dot">◆</span></div>
+      <div class="ti">Smart Boards<span class="ti-dot">◆</span></div>
+      <div class="ti">Biometric Systems<span class="ti-dot">◆</span></div>
+      <div class="ti">Da Vinci Toner &amp; Ink<span class="ti-dot">◆</span></div>
+    </div>
+  </div>
+
+  <!-- EMPOWERING — like Multisys "Empowering Your Business" -->
+  <section class="section bg-w" style="overflow:hidden">
+    <!-- Triangle floaters -->
+    <div class="tri-wrap">
+      <svg class="tri-f" style="right:3%;top:10%;animation-delay:0s" width="80" height="140" viewBox="0 0 80 140"><polygon points="40,0 80,140 0,140" fill="rgba(204,20,23,.12)"/></svg>
+      <svg class="tri-f" style="right:8%;bottom:10%;animation-delay:-3s" width="50" height="86" viewBox="0 0 50 86"><polygon points="25,0 50,86 0,86" fill="rgba(204,20,23,.07)"/></svg>
+      <svg class="tri-f" style="left:2%;top:20%;animation-delay:-5s" width="34" height="58" viewBox="0 0 34 58"><polygon points="17,0 34,58 0,58" fill="rgba(204,20,23,.06)"/></svg>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div data-anim="left">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="photo ph-dark" style="height:250px;grid-column:1/-1"><div class="ph-ico">🏢</div><div class="ph-lbl">DAI HQ</div><div class="ph-cap"><h4>Our Headquarters</h4><p>#30 Timog Ave, Quezon City</p></div></div>
+          <div class="photo ph-red" style="height:180px"><div class="ph-ico">👥</div><div class="ph-lbl">Our Team</div><div class="ph-cap"><h4>Our People</h4></div></div>
+          <div class="photo ph-gray" style="height:180px"><div class="ph-ico">🤝</div><div class="ph-lbl">Partners</div><div class="ph-cap"><h4>Global Partners</h4></div></div>
+        </div>
+      </div>
+      <div data-anim="right">
+        <div class="eyebrow"><div class="eyebrow-bar"></div>Empowering</div>
+        <h2 class="s-ttl">Empowering<br><span class="r">Your Business</span></h2>
+        <p class="s-desc" style="margin-bottom:20px">Doña Alejandra, Inc. (DAI) is a prominent player in the Information and Communication Technologies sector, having solidified its position since its establishment in 2007 in Quezon City.</p>
+        <p class="s-desc" style="margin-bottom:34px">With a commitment to excellence and client satisfaction, DAI continues to make significant strides in reshaping the technological landscape and setting new standards in service delivery — guided by transparency, accountability, and good governance.</p>
+        <button class="btn btn-red" onclick="goPage('about')">Learn More About DAI <span class="arr">→</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT BAND -->
+  <div class="stat-band">
+    <div class="sb" data-anim><span class="sb-n" data-count="17" data-suf="+">17+</span><span class="sb-l">Years in Business</span></div>
+    <div class="sb" data-anim data-delay="1"><span class="sb-n" data-count="8">8</span><span class="sb-l">Core Services</span></div>
+    <div class="sb" data-anim data-delay="2"><span class="sb-n">QC</span><span class="sb-l">Quezon City HQ</span></div>
+    <div class="sb" data-anim data-delay="3"><span class="sb-n">100%</span><span class="sb-l">Client Focused</span></div>
+  </div>
+
+  <!-- SERVICES GRID -->
+  <section class="section bg-g" style="position:relative;overflow:hidden">
+    <div class="tri-wrap">
+      <svg class="tri-f" style="left:1%;bottom:5%;animation-delay:-2s" width="90" height="156" viewBox="0 0 90 156"><polygon points="45,0 90,156 0,156" fill="rgba(204,20,23,.08)"/></svg>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:18px">
+      <div><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Products &amp; Services</div><h2 class="s-ttl" data-anim>What We <span class="r">Offer</span></h2></div>
+      <button class="btn btn-red" data-anim onclick="goPage('solutions')">View All Services <span class="arr">→</span></button>
+    </div>
+    <div class="g3">
+      <div class="card" data-anim><div class="card-num">01</div><div class="card-icon">💻</div><h3>Software Development</h3><p>Tailor-made software solutions aligned with your unique business needs — from apps to enterprise systems.</p><a class="card-link" onclick="goPage('solutions')">Learn More →</a></div>
+      <div class="card" data-anim data-delay="1"><div class="card-num">02</div><div class="card-icon">🛡️</div><h3>Cybersecurity</h3><p>Meticulously crafted solutions to safeguard every facet of your company's digital assets.</p><a class="card-link" onclick="goPage('solutions')">Learn More →</a></div>
+      <div class="card" data-anim data-delay="2"><div class="card-num">03</div><div class="card-icon">☁️</div><h3>CloudPH Hosting</h3><p>Philippine-based Managed Cloud Hosting — fast, local, and compliant with PH data privacy laws.</p><a class="card-link" onclick="goPage('solutions')">Learn More →</a></div>
+      <div class="card" data-anim data-delay="1"><div class="card-num">04</div><div class="card-icon">📺</div><h3>LED Walls</h3><p>Distribution and installation of top-tier indoor and outdoor LED walls for any environment.</p><a class="card-link" onclick="goPage('solutions')">Learn More →</a></div>
+      <div class="card" data-anim data-delay="2"><div class="card-num">05</div><div class="card-icon">🖥️</div><h3>Interactive Kiosks</h3><p>High-quality kiosks blending elegant design and the latest technology for public engagement.</p><a class="card-link" onclick="goPage('solutions')">Learn More →</a></div>
+      <div class="card" data-anim data-delay="3"><div class="card-num">06</div><div class="card-icon">🕐</div><h3>Biometric Systems</h3><p>Comprehensive time &amp; attendance solutions — reliable biometric machines for workforce management.</p><a class="card-link" onclick="goPage('solutions')">Learn More →</a></div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES — dark section with triangle floaters like Multisys -->
+  <section class="section bg-b" style="overflow:hidden">
+    <div class="tri-wrap">
+      <svg class="tri-f" style="right:5%;top:5%;animation-delay:0s" width="100" height="172" viewBox="0 0 100 172"><polygon points="50,0 100,172 0,172" fill="rgba(204,20,23,.2)"/></svg>
+      <svg class="tri-f" style="right:15%;bottom:-5%;animation-delay:-4s" width="60" height="104" viewBox="0 0 60 104"><polygon points="30,0 60,104 0,104" fill="rgba(255,255,255,.04)"/></svg>
+    </div>
+    <div style="margin-bottom:54px">
+      <div class="eyebrow ew-white" data-anim><div class="eyebrow-bar"></div>Industries</div>
+      <h2 class="s-ttl" data-anim style="max-width:520px"><span class="w">Bridging the</span> <span class="r">Digital Divide</span> <span class="out">in Key Sectors</span></h2>
+    </div>
+    <div class="g3">
+      <div class="ind" data-anim>
+        <div class="ind-bg"><div class="photo ph-dark" style="height:100%;border-radius:0"><div class="ph-ico" style="font-size:72px">🏛️</div></div></div>
+        <div class="ind-ov"></div>
+        <div class="ind-body"><span class="ind-tag">Government</span><h3>Public Sector</h3><p>Streamlining government operations and accelerating public service delivery.</p></div>
+      </div>
+      <div class="ind" data-anim data-delay="1">
+        <div class="ind-bg"><div class="photo ph-mid" style="height:100%;border-radius:0"><div class="ph-ico" style="font-size:72px">🏢</div></div></div>
+        <div class="ind-ov"></div>
+        <div class="ind-body"><span class="ind-tag">Corporate</span><h3>Business &amp; Enterprise</h3><p>Empowering companies with integrated digital platforms and modern systems.</p></div>
+      </div>
+      <div class="ind" data-anim data-delay="2">
+        <div class="ind-bg"><div class="photo ph-navy" style="height:100%;border-radius:0"><div class="ph-ico" style="font-size:72px">🎓</div></div></div>
+        <div class="ind-ov"></div>
+        <div class="ind-body"><span class="ind-tag">Education</span><h3>Education Sector</h3><p>Modernizing classrooms and institutions with smart boards and kiosk technology.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS / CLIENTS — white section like Multisys "Our Network" -->
+  <section class="section bg-w" style="overflow:hidden">
+    <div class="tri-wrap">
+      <svg class="tri-f" style="left:0%;bottom:0%;animation-delay:-1.5s" width="70" height="120" viewBox="0 0 70 120"><polygon points="35,0 70,120 0,120" fill="rgba(204,20,23,.07)"/></svg>
+    </div>
+    <div style="text-align:center;margin-bottom:46px">
+      <div class="eyebrow" data-anim style="justify-content:center"><div class="eyebrow-bar"></div>Our Network</div>
+      <h2 class="s-ttl" data-anim>Trusted By <span class="r">Industry Leaders</span></h2>
+      <p class="s-desc" data-anim style="margin:0 auto;text-align:center">Our partnerships with global brands are certified by CCPIT and CCOIC, establishing our credibility and international reach.</p>
+    </div>
+    <div class="pl-grid" data-anim>
+      <div class="pl">Bureau of Customs</div><div class="pl">PhilHealth</div>
+      <div class="pl">SSS</div><div class="pl">GSIS</div>
+      <div class="pl">COMELEC</div><div class="pl">DOST</div>
+      <div class="pl">PAGASA</div><div class="pl">Land Bank PH</div>
+      <div class="pl">DBM</div><div class="pl">TESDA</div>
+      <div class="pl">DepEd</div><div class="pl">DILG</div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS — like Multisys -->
+  <section class="section bg-g" style="overflow:hidden">
+    <div class="tri-wrap">
+      <svg class="tri-f" style="right:2%;top:8%;animation-delay:-2.5s" width="80" height="140" viewBox="0 0 80 140"><polygon points="40,0 80,140 0,140" fill="rgba(204,20,23,.09)"/></svg>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:16px">
+      <div><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Testimonials</div><h2 class="s-ttl" data-anim>What Our <span class="r">Partners</span> Say</h2></div>
+      <div class="testi-arrows">
+        <button class="testi-btn" id="tPrev" onclick="moveTesti(-1)">←</button>
+        <button class="testi-btn" id="tNext" onclick="moveTesti(1)">→</button>
+      </div>
+    </div>
+    <div class="testi-wrap" data-anim>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">DAI's software solutions have transformed how our department handles requests. The customization they provided perfectly matched our governance workflow, improving transparency across the board.</p><div class="testi-person"><div class="testi-avatar">👤</div><div><div class="testi-name">Government Agency Director</div><div class="testi-role">Public Sector Client</div></div></div></div>
+        <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Their CloudPH service gave us local hosting that's fast, secure, and compliant. Having our data stay within Philippine borders was a non-negotiable for us and DAI delivered exactly that.</p><div class="testi-person"><div class="testi-avatar">👤</div><div><div class="testi-name">IT Manager</div><div class="testi-role">Enterprise Client</div></div></div></div>
+        <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">The LED wall installation from DAI completely elevated our conference facility. The quality is top-tier, installation was seamless, and their after-sales support is excellent.</p><div class="testi-person"><div class="testi-avatar">👤</div><div><div class="testi-name">Facilities Manager</div><div class="testi-role">Corporate Client</div></div></div></div>
+        <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">We've partnered with DAI for our biometric timekeeping needs and couldn't be happier. Reliable hardware, easy integration, and a responsive team whenever we have questions.</p><div class="testi-person"><div class="testi-avatar">👤</div><div><div class="testi-name">HR Director</div><div class="testi-role">Private Sector Client</div></div></div></div>
+        <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">DAI's cybersecurity assessment revealed vulnerabilities we didn't know existed. Their team was thorough, professional, and helped us implement solutions that now protect our entire network.</p><div class="testi-person"><div class="testi-avatar">👤</div><div><div class="testi-name">CISO</div><div class="testi-role">Financial Institution Client</div></div></div></div>
+      </div>
+    </div>
+    <div class="testi-nav" id="testiDots">
+      <div class="testi-dot on" onclick="goTesti(0)"></div>
+      <div class="testi-dot" onclick="goTesti(1)"></div>
+      <div class="testi-dot" onclick="goTesti(2)"></div>
+    </div>
+  </section>
+
+  <!-- NEWS PREVIEW -->
+  <section class="section bg-w">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;flex-wrap:wrap;gap:18px">
+      <div><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>News &amp; Updates</div><h2 class="s-ttl" data-anim>Latest <span class="r">Stories</span></h2></div>
+      <button class="btn btn-outline-red" data-anim onclick="goPage('news')">View All News <span class="arr">→</span></button>
+    </div>
+    <div class="g3">
+      <div class="nc" data-anim><div class="nc-img"><div class="photo ph-dark" style="height:100%;border-radius:0"><div class="ph-ico">🌐</div></div></div><div class="nc-body"><span class="nc-tag nt-r">Technology</span><h3>Welcome to Network World</h3><p>Staying abreast of networking technologies is crucial in today's rapidly evolving IT landscape...</p><div class="nc-date">July 15, 2024</div></div></div>
+      <div class="nc" data-anim data-delay="1"><div class="nc-img"><div class="photo ph-gray" style="height:100%;border-radius:0"><div class="ph-ico">💡</div></div></div><div class="nc-body"><span class="nc-tag nt-k">Insights</span><h3>Navigating IT Solutions</h3><p>A comprehensive look at the expansive world of IT solutions in the modern enterprise environment...</p><div class="nc-date">July 22, 2024</div></div></div>
+      <div class="nc" data-anim data-delay="2"><div class="nc-img"><div class="photo ph-red" style="height:100%;border-radius:0"><div class="ph-ico">🚀</div></div></div><div class="nc-body"><span class="nc-tag nt-r">Business</span><h3>Empowering Your Business</h3><p>Businesses rely heavily on IT to streamline operations and enhance productivity...</p><div class="nc-date">July 28, 2024</div></div></div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <div class="cta-bg"></div>
+    <div class="tri-wrap">
+      <svg class="tri-f" style="left:3%;top:5%;animation-delay:0s" width="90" height="155" viewBox="0 0 90 155"><polygon points="45,0 90,155 0,155" fill="rgba(204,20,23,.2)"/></svg>
+      <svg class="tri-f" style="right:4%;bottom:-10%;animation-delay:-4s" width="110" height="190" viewBox="0 0 110 190"><polygon points="55,0 110,190 0,190" fill="rgba(255,255,255,.04)"/></svg>
+    </div>
+    <div class="eyebrow ew-white" data-anim style="justify-content:center"><div class="eyebrow-bar"></div>Get In Touch</div>
+    <h2 data-anim>Let's Build <span class="r">Something</span><br><span class="out">Exceptional</span> Together</h2>
+    <p data-anim>Contact our team and discover how DAI can transform your business with innovative ICT solutions tailored to your needs.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap" data-anim>
+      <button class="btn btn-red" onclick="goPage('contact')">Contact Us Today <span class="arr">→</span></button>
+      <button class="btn btn-outline" onclick="goPage('solutions')">Our Solutions</button>
+    </div>
+  </div>
+
+</div><!-- /home -->
+
+<!-- ════════════════════════════════════════
+     ABOUT PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-tri ph-t1"></div><div class="ph-tri ph-t2"></div><div class="ph-tri ph-t3"></div>
+    <div class="ph-inner"><div class="breadcrumb">Home <span>/ Who We Are</span></div><h1 class="ph-ttl">Who We <span class="r">Are</span></h1><p class="ph-sub">A trusted ICT partner — committed to transparency, accountability, and good governance since 2007.</p></div>
+  </div>
+  <div class="stat-band">
+    <div class="sb"><span class="sb-n">17+</span><span class="sb-l">Years in Business</span></div>
+    <div class="sb"><span class="sb-n">8</span><span class="sb-l">Core Services</span></div>
+    <div class="sb"><span class="sb-n">QC</span><span class="sb-l">Quezon City HQ</span></div>
+    <div class="sb"><span class="sb-n">PH</span><span class="sb-l">Proudly Filipino</span></div>
+  </div>
+
+  <!-- HISTORY TIMELINE -->
+  <section class="section bg-w" style="overflow:hidden">
+    <div class="tri-wrap"><svg class="tri-f" style="right:2%;top:8%" width="80" height="140" viewBox="0 0 80 140"><polygon points="40,0 80,140 0,140" fill="rgba(204,20,23,.08)"/></svg></div>
+    <div style="text-align:center;margin-bottom:58px"><div class="eyebrow" data-anim style="justify-content:center"><div class="eyebrow-bar"></div>Our History</div><h2 class="s-ttl" data-anim>How We <span class="r">Got Here</span></h2></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div data-anim="left">
+        <div class="timeline">
+          <div class="tl"><div class="tl-dot"></div><div class="tl-yr">2007</div><h4>DAI Was Founded</h4><p>Doña Alejandra, Inc. was established in Quezon City with a bold vision to deliver innovative ICT solutions grounded in transparency and good governance.</p></div>
+          <div class="tl"><div class="tl-dot"></div><div class="tl-yr">2010 – 2015</div><h4>Service Expansion</h4><p>DAI expanded its portfolio into cybersecurity, cloud hosting, and hardware distribution — growing a diverse clientele across government and private sectors.</p></div>
+          <div class="tl"><div class="tl-dot"></div><div class="tl-yr">2016 – 2020</div><h4>Global Certifications</h4><p>Established internationally certified partnerships recognized by CCPIT and CCOIC, solidifying DAI's credibility on the world stage.</p></div>
+          <div class="tl"><div class="tl-dot"></div><div class="tl-yr">2021 – Present</div><h4>Continued Innovation</h4><p>Launched CloudPH and expanded into LED walls, interactive kiosks, smart boards, and biometric systems — setting new benchmarks in Philippine ICT.</p></div>
+        </div>
+      </div>
+      <div data-anim="right" style="display:flex;flex-direction:column;gap:14px">
+        <div class="photo ph-dark" style="height:250px"><div class="ph-ico" style="font-size:64px">🏢</div><div class="ph-lbl">DAI HQ</div><div class="ph-cap"><h4>Our Headquarters</h4><p>#30 Timog Ave, Quezon City</p></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="photo ph-red" style="height:175px"><div class="ph-ico">👥</div><div class="ph-lbl">Team</div><div class="ph-cap"><h4>Our People</h4></div></div>
+          <div class="photo ph-gray" style="height:175px"><div class="ph-ico">🤝</div><div class="ph-lbl">Partners</div><div class="ph-cap"><h4>Global Partners</h4></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO/WHAT/HOW — exactly like Multisys -->
+  <section class="section bg-g" style="overflow:hidden">
+    <div class="tri-wrap"><svg class="tri-f" style="left:1%;bottom:5%" width="70" height="120" viewBox="0 0 70 120"><polygon points="35,0 70,120 0,120" fill="rgba(204,20,23,.07)"/></svg></div>
+    <div class="g3">
+      <div data-anim style="background:var(--white);border-radius:16px;overflow:hidden">
+        <div class="photo ph-red" style="height:215px;border-radius:0"><div class="ph-ico" style="font-size:64px">🎯</div><div class="ph-lbl">Who We Are</div></div>
+        <div style="padding:28px"><div class="eyebrow" style="margin-bottom:10px"><div class="eyebrow-bar"></div>Who We Are</div><p class="s-desc" style="max-width:100%;font-size:14px">We are an ICT solutions company backed by experienced professionals — committed to helping private companies operate efficiently and assisting government agencies in delivering faster, more effective public services.</p></div>
+      </div>
+      <div data-anim data-delay="1" style="background:var(--white);border-radius:16px;overflow:hidden">
+        <div class="photo ph-dark" style="height:215px;border-radius:0"><div class="ph-ico" style="font-size:64px">⚙️</div><div class="ph-lbl">What We Do</div></div>
+        <div style="padding:28px"><div class="eyebrow" style="margin-bottom:10px"><div class="eyebrow-bar"></div>What We Do</div><p class="s-desc" style="max-width:100%;font-size:14px">DAI empowers businesses through a wide range of ICT products — from software development and cybersecurity to cloud hosting, hardware, and consumables. We bridge technology gaps across all sectors of Philippine society.</p></div>
+      </div>
+      <div data-anim data-delay="2" style="background:var(--white);border-radius:16px;overflow:hidden">
+        <div class="photo ph-gray" style="height:215px;border-radius:0"><div class="ph-ico" style="font-size:64px">💡</div><div class="ph-lbl">How We Help</div></div>
+        <div style="padding:28px"><div class="eyebrow" style="margin-bottom:10px"><div class="eyebrow-bar"></div>How We Help</div><p class="s-desc" style="max-width:100%;font-size:14px">We focus on system automation and integration services that expedite processes and transactions — reinforcing the ease of doing business across the Philippines and beyond through transparent, accountable solutions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION — dark + triangle floaters like Multisys -->
+  <section class="section bg-b" style="overflow:hidden">
+    <div class="tri-wrap">
+      <svg class="tri-f" style="right:6%;top:6%;animation-delay:0s" width="100" height="172" viewBox="0 0 100 172"><polygon points="50,0 100,172 0,172" fill="rgba(204,20,23,.2)"/></svg>
+      <svg class="tri-f" style="left:3%;bottom:8%;animation-delay:-4s" width="55" height="95" viewBox="0 0 55 95"><polygon points="27,0 55,95 0,95" fill="rgba(255,255,255,.04)"/></svg>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div data-anim="left">
+        <div class="eyebrow ew-white"><div class="eyebrow-bar"></div>Our Mission</div>
+        <h2 class="s-ttl" style="margin-bottom:18px"><span class="w">Sustainable</span> <span class="r">Future</span></h2>
+        <p class="s-desc-w" style="margin-bottom:36px">Our mission is to build a sustainable and future-ready society by providing smart ICT solutions to empower businesses and partners to expedite and streamline their processes — with full accountability and transparency.</p>
+        <div class="eyebrow ew-white"><div class="eyebrow-bar"></div>Our Vision</div>
+        <h2 class="s-ttl" style="font-size:clamp(24px,3.5vw,42px);margin-bottom:18px"><span class="r">Digital</span> <span class="w">Transformation</span></h2>
+        <p class="s-desc-w">Our vision is to revolutionize ways of life towards greater digital transformation through innovative software solutions — building a more transparent, accountable, and efficient Philippines.</p>
+      </div>
+      <div data-anim="right">
+        <div class="photo ph-red" style="height:440px"><div class="ph-ico" style="font-size:80px">🌏</div><div class="ph-lbl">Mission &amp; Vision</div><div class="ph-cap"><h4>Our Purpose</h4><p>Towards transparency, accountability, and good governance</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section bg-w" style="overflow:hidden">
+    <div class="tri-wrap"><svg class="tri-f" style="right:2%;bottom:5%;animation-delay:-2s" width="65" height="112" viewBox="0 0 65 112"><polygon points="32,0 65,112 0,112" fill="rgba(204,20,23,.07)"/></svg></div>
+    <div style="text-align:center;margin-bottom:52px"><div class="eyebrow" data-anim style="justify-content:center"><div class="eyebrow-bar"></div>Corporate Principles</div><h2 class="s-ttl" data-anim>Our <span class="r">Values</span></h2></div>
+    <div class="val-grid">
+      <div class="val" data-anim><div class="val-ico">🎯</div><h4>Purpose</h4><p>Everything we do is driven by a clear purpose — to empower businesses through technology and create lasting societal impact.</p></div>
+      <div class="val" data-anim data-delay="1"><div class="val-ico">✅</div><h4>Accountability</h4><p>We take full ownership of our commitments, delivering on promises with integrity and transparency at every step.</p></div>
+      <div class="val" data-anim data-delay="2"><div class="val-ico">🤝</div><h4>Collaboration</h4><p>True innovation happens together. We partner closely with clients to co-create solutions that truly work.</p></div>
+      <div class="val" data-anim data-delay="3"><div class="val-ico">⚡</div><h4>Technology</h4><p>We embrace the latest advancements to stay ahead of the curve and deliver future-ready ICT solutions.</p></div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section bg-g" style="overflow:hidden">
+    <div class="tri-wrap"><svg class="tri-f" style="left:1%;top:5%;animation-delay:-1s" width="75" height="130" viewBox="0 0 75 130"><polygon points="37,0 75,130 0,130" fill="rgba(204,20,23,.07)"/></svg></div>
+    <div style="margin-bottom:52px"><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Our Team</div><h2 class="s-ttl" data-anim>Meet Our <span class="r">Leaders</span></h2></div>
+    <div class="team-grid">
+      <div class="tcard" data-anim><div class="tcard-photo"><div class="photo ph-dark" style="height:100%;border-radius:0"><div class="ph-ico">👤</div></div></div><div class="tcard-body"><h4>Chief Executive Officer</h4><p>Doña Alejandra, Inc.</p></div></div>
+      <div class="tcard" data-anim data-delay="1"><div class="tcard-photo"><div class="photo ph-gray" style="height:100%;border-radius:0"><div class="ph-ico">👤</div></div></div><div class="tcard-body"><h4>Chief Operating Officer</h4><p>Operations &amp; Admin</p></div></div>
+      <div class="tcard" data-anim data-delay="2"><div class="tcard-photo"><div class="photo ph-red" style="height:100%;border-radius:0"><div class="ph-ico">👤</div></div></div><div class="tcard-body"><h4>Chief Technology Officer</h4><p>Tech &amp; Innovation</p></div></div>
+      <div class="tcard" data-anim data-delay="3"><div class="tcard-photo"><div class="photo ph-mid" style="height:100%;border-radius:0"><div class="ph-ico">👤</div></div></div><div class="tcard-body"><h4>Chief Financial Officer</h4><p>Finance &amp; Accounting</p></div></div>
+      <div class="tcard" data-anim><div class="tcard-photo"><div class="photo ph-navy" style="height:100%;border-radius:0"><div class="ph-ico">👤</div></div></div><div class="tcard-body"><h4>Head of IT Sales</h4><p>Sales &amp; Business Dev</p></div></div>
+      <div class="tcard" data-anim data-delay="1"><div class="tcard-photo"><div class="photo ph-red" style="height:100%;border-radius:0"><div class="ph-ico">👤</div></div></div><div class="tcard-body"><h4>Head of Support</h4><p>Client Services</p></div></div>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <section class="section bg-w">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px">
+      <div><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Global Partnerships</div><h2 class="s-ttl" data-anim>International <span class="r">Recognition</span></h2><p class="s-desc" data-anim style="margin-bottom:30px">Our partnerships with global brands are certified by CCPIT and CCOIC, establishing our credibility and international reach across Asia and beyond.</p><div class="photo ph-dark" style="height:210px" data-anim><div class="ph-ico" style="font-size:64px">🌐</div><div class="ph-lbl">CCPIT Certification</div><div class="ph-cap"><h4>CCPIT &amp; CCOIC Certified</h4><p>International trade certification</p></div></div></div>
+      <div><div class="eyebrow" data-anim data-delay="1"><div class="eyebrow-bar"></div>Certifications</div><h2 class="s-ttl" data-anim data-delay="1">Quality You Can <span class="r">Trust</span></h2><div class="cert-grid" data-anim data-delay="2"><div class="cert"><div class="cert-ico">🏅</div><h4>CCPIT</h4><p>China Council for Promotion of International Trade</p></div><div class="cert"><div class="cert-ico">🌐</div><h4>CCOIC</h4><p>China Chamber of International Commerce</p></div><div class="cert"><div class="cert-ico">✅</div><h4>ISO Compliant</h4><p>International Quality Standards</p></div><div class="cert"><div class="cert-ico">🔐</div><h4>Cybersec Verified</h4><p>Certified Cybersecurity Provider</p></div></div></div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="cta-bg"></div>
+    <div class="tri-wrap"><svg class="tri-f" style="left:4%;top:5%" width="80" height="138" viewBox="0 0 80 138"><polygon points="40,0 80,138 0,138" fill="rgba(204,20,23,.2)"/></svg></div>
+    <h2 data-anim>Join The <span class="r">DAI</span> <span class="out">Family</span></h2>
+    <p data-anim>Be part of a team that makes technology work for the Filipino people.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap" data-anim><button class="btn btn-red" onclick="goPage('careers')">View Open Roles <span class="arr">→</span></button><button class="btn btn-outline" onclick="goPage('contact')">Contact Us</button></div>
+  </div>
+</div><!-- /about -->
+
+<!-- ════════════════════════════════════════
+     SOLUTIONS PAGE
+════════════════════════════════════════ -->
+<div class="page" id="page-solutions">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-tri ph-t1"></div><div class="ph-tri ph-t3"></div>
+    <div class="ph-inner"><div class="breadcrumb">Home <span>/ Solutions</span></div><h1 class="ph-ttl">Products &amp; <span class="r">Services</span></h1><p class="ph-sub">From custom software to cutting-edge hardware — comprehensive ICT solutions for every industry.</p></div>
+  </div>
+
+  <section class="section bg-w">
+    <div style="margin-bottom:58px"><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Core Services</div><h2 class="s-ttl" data-anim>Our <span class="r">Solutions</span></h2></div>
+    <div class="frow">
+      <div class="frow-text" data-anim="left"><div class="eyebrow"><div class="eyebrow-bar"></div>01 — Software</div><h3>Software Development &amp; Customization</h3><p>We specialize in creating tailor-made software solutions aligned with your unique business needs. From building applications from scratch to customizing existing platforms, our team delivers reliable, scalable, and maintainable software.</p><div class="badges"><span class="badge badge-r">Web Apps</span><span class="badge badge-k">Mobile Apps</span><span class="badge badge-k">Enterprise</span><span class="badge badge-k">API Integration</span></div><button class="btn btn-red" onclick="goPage('contact')">Request a Demo <span class="arr">→</span></button></div>
+      <div class="frow-img" data-anim="right"><div class="photo ph-dark" style="height:360px;border-radius:16px"><div class="ph-ico" style="font-size:80px">💻</div><div class="ph-lbl">Software Dev</div><div class="ph-cap"><h4>Software Solutions</h4><p>Custom-built for your needs</p></div></div></div>
+    </div>
+    <div class="frow flip">
+      <div class="frow-text" data-anim="right"><div class="eyebrow"><div class="eyebrow-bar"></div>02 — Security</div><h3>Cybersecurity Solutions</h3><p>Meticulously crafted cybersecurity solutions to safeguard every facet of your company's digital assets. Comprehensive threat protection, compliance management, and security audits for today's evolving threat landscape.</p><div class="badges"><span class="badge badge-r">Threat Detection</span><span class="badge badge-k">Compliance</span><span class="badge badge-k">Audits</span></div><button class="btn btn-red" onclick="goPage('contact')">Learn More <span class="arr">→</span></button></div>
+      <div class="frow-img" data-anim="left"><div class="photo ph-red" style="height:360px;border-radius:16px"><div class="ph-ico" style="font-size:80px">🛡️</div><div class="ph-lbl">Cybersecurity</div><div class="ph-cap"><h4>Cybersecurity</h4><p>Protecting your digital assets</p></div></div></div>
+    </div>
+    <div class="frow">
+      <div class="frow-text" data-anim="left"><div class="eyebrow"><div class="eyebrow-bar"></div>03 — Cloud</div><h3>CloudPH — Philippine Managed Cloud</h3><p>CloudPH is a leading Philippine-based Managed Cloud Hosting Service. Our physical servers are strategically located within the Philippines — ensuring data sovereignty, fast local connectivity, and full compliance with PH data privacy regulations.</p><div class="badges"><span class="badge badge-r">PH-Based</span><span class="badge badge-k">Data Privacy</span><span class="badge badge-k">99.9% Uptime</span></div><button class="btn btn-red" onclick="goPage('contact')">Get Started <span class="arr">→</span></button></div>
+      <div class="frow-img" data-anim="right"><div class="photo ph-navy" style="height:360px;border-radius:16px"><div class="ph-ico" style="font-size:80px">☁️</div><div class="ph-lbl">CloudPH</div><div class="ph-cap"><h4>CloudPH</h4><p>Philippine-based cloud hosting</p></div></div></div>
+    </div>
+  </section>
+
+  <section class="section bg-g" style="overflow:hidden">
+    <div class="tri-wrap"><svg class="tri-f" style="right:2%;bottom:5%" width="80" height="140" viewBox="0 0 80 140"><polygon points="40,0 80,140 0,140" fill="rgba(204,20,23,.07)"/></svg></div>
+    <div style="margin-bottom:52px"><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Hardware</div><h2 class="s-ttl" data-anim>Technology You Can <span class="r">Touch</span></h2></div>
+    <div class="g4">
+      <div class="card" data-anim><div style="height:145px;border-radius:10px;overflow:hidden;margin-bottom:18px"><div class="photo ph-dark" style="height:100%;border-radius:0"><div class="ph-ico">📺</div></div></div><h3>LED Walls</h3><p>Indoor &amp; outdoor LED wall distribution and installation for any environment.</p></div>
+      <div class="card" data-anim data-delay="1"><div style="height:145px;border-radius:10px;overflow:hidden;margin-bottom:18px"><div class="photo ph-gray" style="height:100%;border-radius:0"><div class="ph-ico">🖥️</div></div></div><h3>Interactive Kiosks</h3><p>High-quality kiosks blending elegant design and latest technology.</p></div>
+      <div class="card" data-anim data-delay="2"><div style="height:145px;border-radius:10px;overflow:hidden;margin-bottom:18px"><div class="photo ph-red" style="height:100%;border-radius:0"><div class="ph-ico">📋</div></div></div><h3>Smart Boards</h3><p>Interactive smart boards with touch interfaces for classrooms and boardrooms.</p></div>
+      <div class="card" data-anim data-delay="3"><div style="height:145px;border-radius:10px;overflow:hidden;margin-bottom:18px"><div class="photo ph-mid" style="height:100%;border-radius:0"><div class="ph-ico">🕐</div></div></div><h3>Biometric Systems</h3><p>Comprehensive biometric timekeeping for efficient workforce management.</p></div>
+    </div>
+  </section>
+
+  <section class="section bg-w">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div class="photo ph-dark" style="height:380px" data-anim="left"><div class="ph-ico" style="font-size:80px">🖨️</div><div class="ph-lbl">Da Vinci</div><div class="ph-cap"><h4>Da Vinci Premium Ink &amp; Toner</h4><p>Professional-grade print quality</p></div></div>
+      <div data-anim="right"><div class="eyebrow"><div class="eyebrow-bar"></div>Consumables</div><h2 class="s-ttl">Da Vinci <span class="r">Premium</span> Toner &amp; Ink</h2><p class="s-desc" style="margin-bottom:24px">A wide range of printers, copiers, and duplicators providing exceptional performance. Da Vinci Premium Toner and Ink Cartridges — engineered for professional-grade output and consistent high-quality prints for every business need.</p><div class="badges"><span class="badge badge-r">Laser Toner</span><span class="badge badge-k">Inkjet</span><span class="badge badge-k">Copier</span><span class="badge badge-k">Duplicators</span></div><button class="btn btn-red" style="margin-top:20px" onclick="goPage('contact')">Inquire Now <span class="arr">→</span></button></div>
+    </div>
+  </section>
+
+  <div class="cta-band"><div class="cta-bg"></div><h2 data-anim>Ready To <span class="r">Transform</span><br><span class="out">Your Business?</span></h2><p data-anim>Let's find the right ICT solution for you.</p><button class="btn btn-red" data-anim onclick="goPage('contact')">Talk to Our Team <span class="arr">→</span></button></div>
+</div><!-- /solutions -->
+
+<!-- ════════════════════════════════════════
+     CAREERS
+════════════════════════════════════════ -->
+<div class="page" id="page-careers">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-tri ph-t1"></div><div class="ph-tri ph-t2"></div>
+    <div class="ph-inner"><div class="breadcrumb">Home <span>/ Careers</span></div><h1 class="ph-ttl">Join Our <span class="r">Team</span></h1><p class="ph-sub">We're always seeking passionate, driven people who have what it takes to make an impact through technology.</p></div>
+  </div>
+
+  <section class="section bg-w">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div data-anim="left"><div class="eyebrow"><div class="eyebrow-bar"></div>Why DAI?</div><h2 class="s-ttl">Be Part Of <span class="r">Something Big</span></h2><p class="s-desc" style="margin-bottom:16px">At Doña Alejandra, Inc., we believe great technology is built by great people. We foster an environment where innovation thrives and every team member is empowered to make a difference.</p><p class="s-desc" style="margin-bottom:32px">We are always seeking passionate team members who have what it takes to make an impact and build a better society through technology.</p><button class="btn btn-red">Send Your CV <span class="arr">→</span></button></div>
+      <div class="photo ph-dark" style="height:420px" data-anim="right"><div class="ph-ico" style="font-size:80px">🏢</div><div class="ph-lbl">DAI Workplace</div><div class="ph-cap"><h4>Join the DAI Family</h4><p>A workplace built on innovation and purpose</p></div></div>
+    </div>
+  </section>
+
+  <section class="section bg-g" style="overflow:hidden">
+    <div class="tri-wrap"><svg class="tri-f" style="right:3%;top:5%" width="80" height="140" viewBox="0 0 80 140"><polygon points="40,0 80,140 0,140" fill="rgba(204,20,23,.08)"/></svg></div>
+    <div style="margin-bottom:52px"><div class="eyebrow" data-anim><div class="eyebrow-bar"></div>Open Positions</div><h2 class="s-ttl" data-anim>Current <span class="r">Opportunities</span></h2></div>
+    <div class="job-list">
+      <div class="job" data-anim><div><h3>Senior Software Developer</h3><div class="jmeta"><span class="jb jb-r">Full Time</span><span class="jb jb-k">Software</span><span class="jb jb-g">On-site · QC</span></div></div><button class="btn btn-red">Apply →</button></div>
+      <div class="job" data-anim data-delay="1"><div><h3>Cybersecurity Analyst</h3><div class="jmeta"><span class="jb jb-r">Full Time</span><span class="jb jb-k">Security</span><span class="jb jb-g">On-site · QC</span></div></div><button class="btn btn-red">Apply →</button></div>
+      <div class="job" data-anim data-delay="2"><div><h3>Cloud Infrastructure Engineer</h3><div class="jmeta"><span class="jb jb-r">Full Time</span><span class="jb jb-k">Cloud/DevOps</span><span class="jb jb-g">Hybrid</span></div></div><button class="btn btn-red">Apply →</button></div>
+      <div class="job" data-anim><div><h3>IT Sales Executive</h3><div class="jmeta"><span class="jb jb-r">Full Time</span><span class="jb jb-k">Sales</span><span class="jb jb-g">On-site · QC</span></div></div><button class="btn btn-red">Apply →</button></div>
+      <div class="job" data-anim data-delay="1"><div><h3>Technical Support Specialist</h3><div class="jmeta"><span class="jb jb-r">Full Time</span><span class="jb jb-k">Support</span><span class="jb jb-g">On-site · QC</span></div></div><button class="btn btn-red">Apply →</button></div>
+      <div class="job" data-anim data-delay="2"><div><h3>UI/UX Designer</h3><div class="jmeta"><span class="jb jb-r">Full Time</span><span class="jb jb-k">Design</span><span class="jb jb-g">Hybrid</span></div></div><button class="btn btn-red">Apply →</button></div>
+    </div>
+  </section>
+
+  <section class="section bg-w">
+    <div style="text-align:center;margin-bottom:52px"><div class="eyebrow" data-anim style="justify-content:center"><div class="eyebrow-bar"></div>Our Culture</div><h2 class="s-ttl" data-anim>Life At <span class="r">DAI</span></h2></div>
+    <div class="cult-grid">
+      <div class="cult" data-anim><div class="cult-ico">🌱</div><h4>Growth Mindset</h4><p>Continuous learning through training, certifications, and expert mentorship.</p></div>
+      <div class="cult" data-anim data-delay="1"><div class="cult-ico">🤝</div><h4>Collaboration</h4><p>Work with driven colleagues who share a commitment to innovation and excellence.</p></div>
+      <div class="cult" data-anim data-delay="2"><div class="cult-ico">⚖️</div><h4>Work-Life Balance</h4><p>We value your time and wellbeing with flexible arrangements where applicable.</p></div>
+      <div class="cult" data-anim data-delay="3"><div class="cult-ico">🏆</div><h4>Recognition</h4><p>Your hard work is celebrated through performance bonuses and recognition programs.</p></div>
+      <div class="cult" data-anim><div class="cult-ico">🚀</div><h4>Impactful Work</h4><p>Work on projects serving real Filipinos — from government systems to enterprise tech.</p></div>
+      <div class="cult" data-anim data-delay="1"><div class="cult-ico">🌏</div><h4>Global Exposure</h4><p>Work with internationally certified products and global partners to broaden your horizon.</p></div>
+    </div>
+  </section>
+
+  <div class="cta-band"><div class="cta-bg"></div><h2 data-anim>Don't See Your <span class="r">Role?</span></h2><p data-anim>Send us your CV — we're always open to talented people passionate about technology.</p><button class="btn btn-red" data-anim onclick="goPage('contact')">Send Application <span class="arr">→</span></button></div>
+</div><!-- /careers -->
+
+<!-- ════════════════════════════════════════
+     NEWS
+════════════════════════════════════════ -->
+<div class="page" id="page-news">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-tri ph-t1"></div><div class="ph-tri ph-t3"></div>
+    <div class="ph-inner"><div class="breadcrumb">Home <span>/ News &amp; Events</span></div><h1 class="ph-ttl">News &amp; <span class="r">Events</span></h1><p class="ph-sub">Stay up to date with DAI's latest projects, partnerships, events, and industry insights.</p></div>
+  </div>
+
+  <section class="section bg-w">
+    <!-- Featured article -->
+    <div data-anim style="background:var(--g100);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;margin-bottom:46px">
+      <div class="photo ph-dark" style="height:350px;border-radius:0"><div class="ph-ico" style="font-size:80px">🌐</div><div class="ph-lbl">Featured Story</div></div>
+      <div style="padding:42px">
+        <span class="nc-tag nt-r">Featured · Technology</span>
+        <h2 style="font-family:var(--disp);font-size:26px;font-weight:700;text-transform:uppercase;color:var(--black);line-height:1.1;margin-bottom:13px;letter-spacing:.3px">Welcome to Network World: Your Gateway to Networking Technologies</h2>
+        <p style="font-size:14px;color:var(--g500);line-height:1.82;margin-bottom:18px">In the rapidly evolving landscape of information technology, staying abreast of networking technologies is crucial for businesses aiming to maintain competitiveness...</p>
+        <div class="nc-date">July 15, 2024</div>
+        <button class="btn btn-red" style="margin-top:20px">Read Article <span class="arr">→</span></button>
+      </div>
+    </div>
+
+    <div class="g3">
+      <div class="nc" data-anim><div class="nc-img"><div class="photo ph-gray" style="height:100%;border-radius:0"><div class="ph-ico">💡</div></div></div><div class="nc-body"><span class="nc-tag nt-k">Insights</span><h3>Navigating IT Solutions Services</h3><p>A comprehensive look at the expansive world of IT solutions in the modern enterprise...</p><div class="nc-date">July 22, 2024</div></div></div>
+      <div class="nc" data-anim data-delay="1"><div class="nc-img"><div class="photo ph-red" style="height:100%;border-radius:0"><div class="ph-ico">🚀</div></div></div><div class="nc-body"><span class="nc-tag nt-r">Business</span><h3>Empowering Your Business Through IT</h3><p>Businesses rely on IT to streamline operations and enhance productivity in today's digital age...</p><div class="nc-date">July 28, 2024</div></div></div>
+      <div class="nc" data-anim data-delay="2"><div class="nc-img"><div class="photo ph-dark" style="height:100%;border-radius:0"><div class="ph-ico">🛡️</div></div></div><div class="nc-body"><span class="nc-tag nt-r">Security</span><h3>Cybersecurity in the Modern Enterprise</h3><p>As digital threats grow more sophisticated, robust cybersecurity frameworks become essential...</p><div class="nc-date">August 5, 2024</div></div></div>
+      <div class="nc" data-anim><div class="nc-img nc-img-sm"><div class="photo ph-navy" style="height:100%;border-radius:0"><div class="ph-ico">☁️</div></div></div><div class="nc-body"><span class="nc-tag nt-k">Cloud</span><h3>Why Local Cloud Hosting Matters</h3><p>Data sovereignty is increasingly important for Philippine enterprises choosing cloud providers...</p><div class="nc-date">August 12, 2024</div></div></div>
+      <div class="nc" data-anim data-delay="1"><div class="nc-img nc-img-sm"><div class="photo ph-red" style="height:100%;border-radius:0"><div class="ph-ico">📺</div></div></div><div class="nc-body"><span class="nc-tag nt-r">Hardware</span><h3>LED Walls Transform Corporate Spaces</h3><p>LED technology is revolutionizing how businesses communicate and present information...</p><div class="nc-date">August 20, 2024</div></div></div>
+      <div class="nc" data-anim data-delay="2"><div class="nc-img nc-img-sm"><div class="photo ph-gray" style="height:100%;border-radius:0"><div class="ph-ico">🎓</div></div></div><div class="nc-body"><span class="nc-tag nt-k">Education</span><h3>Smart Boards and Philippine Education</h3><p>Interactive smart boards are changing classroom dynamics and enabling better teaching...</p><div class="nc-date">September 3, 2024</div></div></div>
+    </div>
+  </section>
+</div><!-- /news -->
+
+<!-- ════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="ph"><div class="ph-bg"></div><div class="ph-tri ph-t1"></div><div class="ph-tri ph-t2"></div>
+    <div class="ph-inner"><div class="breadcrumb">Home <span>/ Contact Us</span></div><h1 class="ph-ttl">Get In <span class="r">Touch</span></h1><p class="ph-sub">Ready to transform your business? Our team is here to help you find the right ICT solution.</p></div>
+  </div>
+
+  <section class="section bg-w">
+    <div style="display:grid;grid-template-columns:1fr 1.35fr;gap:44px;align-items:start">
+      <div class="ct-panel" data-anim="left">
+        <h3 style="font-family:var(--disp);font-size:30px;font-weight:700;text-transform:uppercase;color:var(--white);margin-bottom:10px;letter-spacing:.5px">Let's Work <span style="color:var(--red2)">Together</span></h3>
+        <p style="color:rgba(255,255,255,.55);font-size:15px;line-height:1.82;margin-bottom:34px">Have a project or need ICT advice? Reach out — we respond within 24 hours.</p>
+        <div class="ct-detail"><div class="ct-ico">📍</div><div><h4>Address</h4><p>#30 Timog Avenue, Ground Floor ESNA Building, Quezon City, Philippines</p></div></div>
+        <div class="ct-detail"><div class="ct-ico">✉️</div><div><h4>Email</h4><a href="mailto:info@dai-solutions.ph">info@dai-solutions.ph</a><br><a href="mailto:it-sales@dai-solutions.ph">it-sales@dai-solutions.ph</a></div></div>
+        <div class="ct-detail"><div class="ct-ico">🌐</div><div><h4>Website</h4><a href="https://dai-solutions.ph" target="_blank">dai-solutions.ph</a></div></div>
+        <div class="ct-detail"><div class="ct-ico">📘</div><div><h4>Facebook</h4><a href="https://facebook.com/donaalejandrainc" target="_blank">facebook.com/donaalejandrainc</a></div></div>
+        <div style="margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)">
+          <p style="font-size:10px;color:var(--red2);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:11px">Office Hours</p>
+          <p style="font-size:14px;color:rgba(255,255,255,.6)">Mon – Fri: 8:00 AM – 6:00 PM<br>Saturday: 9:00 AM – 2:00 PM</p>
+        </div>
+      </div>
+      <div class="ct-form" data-anim="right">
+        <h3 style="font-family:var(--disp);font-size:24px;font-weight:700;text-transform:uppercase;color:var(--black);margin-bottom:5px;letter-spacing:.5px">Send Us a Message</h3>
+        <p style="font-size:14px;color:var(--g500);margin-bottom:26px">Our team will respond within 24 business hours.</p>
+        <form onsubmit="handleForm(event)">
+          <div class="fg">
+            <div class="fgrp"><label>First Name</label><input type="text" placeholder="Juan" required></div>
+            <div class="fgrp"><label>Last Name</label><input type="text" placeholder="dela Cruz" required></div>
+            <div class="fgrp fg-full"><label>Email Address</label><input type="email" placeholder="juan@company.ph" required></div>
+            <div class="fgrp fg-full"><label>Contact Number</label><input type="tel" placeholder="+63 9XX XXX XXXX"></div>
+            <div class="fgrp fg-full"><label>Service of Interest</label><select><option value="">Select a service...</option><option>Software Development &amp; Customization</option><option>Cybersecurity Solutions</option><option>CloudPH Managed Hosting</option><option>LED Walls</option><option>Interactive Kiosks</option><option>Interactive Smart Boards</option><option>Biometric Timekeeping Machines</option><option>Da Vinci Toner &amp; Ink</option><option>General Inquiry</option></select></div>
+            <div class="fgrp fg-full"><label>Message</label><textarea placeholder="Tell us about your project..."></textarea></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:12px"><input type="checkbox" id="prv" required style="width:16px;height:16px;accent-color:var(--red)"><label for="prv" style="font-size:13px;color:var(--g500)">I agree with the <a href="#" style="color:var(--red)">Privacy Statement</a>.</label></div>
+          <button type="submit" class="f-sub" style="margin-top:20px">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:var(--g100);padding:60px 5%">
+    <div class="eyebrow" data-anim style="justify-content:center;margin-bottom:10px"><div class="eyebrow-bar"></div>Find Us</div>
+    <h2 class="s-ttl" data-anim style="text-align:center;margin-bottom:30px">Visit Our <span class="r">Office</span></h2>
+    <div data-anim style="background:var(--white);border:2px solid var(--g200);border-radius:18px;height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;max-width:800px;margin:0 auto">
+      <div style="font-size:52px">📍</div>
+      <div style="text-align:center"><h3 style="font-family:var(--disp);font-size:20px;font-weight:700;text-transform:uppercase;color:var(--black);margin-bottom:5px;letter-spacing:.3px">#30 Timog Avenue, Ground Floor ESNA Building</h3><p style="color:var(--g500);font-size:14px">Quezon City, Metro Manila, Philippines</p></div>
+      <a href="https://maps.google.com/?q=Timog+Avenue+Quezon+City" target="_blank" class="btn btn-red">Open in Google Maps →</a>
+    </div>
+  </div>
+</div><!-- /contact -->
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px">
+        <svg width="46" height="34" viewBox="0 0 110 82" fill="none"><path d="M2 76 L22 8 Q27 0 40 0 Q53 0 58 8 L78 76 L60 76 L56 60 L24 60 L20 76 Z" fill="#cc1417"/><path d="M28 47 L52 47 L40 7 Z" fill="#fff"/><rect x="88" y="24" width="11" height="52" rx="5.5" fill="white"/><circle cx="93.5" cy="11" r="9" fill="#cc1417"/></svg>
+        <div><div style="font-family:var(--disp);font-size:17px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--white)">Doña Alejandra, Inc.</div><div style="font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--red);font-weight:600;margin-top:1px">Towards Transparency, Accountability &amp; Good Governance</div></div>
+      </div>
+      <p>An ICT company that has established a strong presence in the industry since 2007, delivering innovative solutions across the Philippines.</p>
+      <div class="ft-soc"><a href="https://facebook.com/donaalejandrainc" target="_blank" class="ft-s">📘</a><a href="mailto:info@dai-solutions.ph" class="ft-s">✉️</a><a href="#" class="ft-s">💼</a></div>
+    </div>
+    <div class="ft-col"><h4>Company</h4><ul><li><a href="#" onclick="goPage('home')">Home</a></li><li><a href="#" onclick="goPage('about')">Who We Are</a></li><li><a href="#" onclick="goPage('careers')">Careers</a></li><li><a href="#" onclick="goPage('news')">News &amp; Events</a></li></ul></div>
+    <div class="ft-col"><h4>Solutions</h4><ul><li><a href="#" onclick="goPage('solutions')">Software Development</a></li><li><a href="#" onclick="goPage('solutions')">Cybersecurity</a></li><li><a href="#" onclick="goPage('solutions')">CloudPH</a></li><li><a href="#" onclick="goPage('solutions')">LED Walls &amp; Kiosks</a></li><li><a href="#" onclick="goPage('solutions')">Da Vinci Ink</a></li></ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul><li><a href="mailto:info@dai-solutions.ph">info@dai-solutions.ph</a></li><li><a href="mailto:it-sales@dai-solutions.ph">it-sales@dai-solutions.ph</a></li><li><a href="#" onclick="goPage('contact')">#30 Timog Ave., QC</a></li><li><a href="https://facebook.com/donaalejandrainc" target="_blank">Facebook</a></li></ul></div>
+  </div>
+  <div class="ft-bottom"><p>© 2025 <a href="#">Doña Alejandra, Inc.</a> All rights reserved.</p><p>Quezon City, Philippines &nbsp;·&nbsp; Est. 2007</p></div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+/* ── NAV ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)
+})
+
+/* ── PAGE NAV ── */
+function goPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'))
+  document.querySelectorAll('.nl').forEach(x=>x.classList.remove('active'))
+  document.getElementById('page-'+p).classList.add('active')
+  const nl=document.getElementById('nl-'+p)
+  if(nl) nl.classList.add('active')
+  window.scrollTo({top:0,behavior:'smooth'})
+  setTimeout(initAnim,100)
+  return false
+}
+function openDrawer(){document.getElementById('drawer').classList.add('open')}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
+
+/* ── SCROLL REVEAL ── */
+function initAnim(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})
+  },{threshold:.1})
+  document.querySelectorAll('.page.active [data-anim]').forEach(el=>{
+    el.classList.remove('visible');io.observe(el)
+  })
+}
+const gIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');gIO.unobserve(e.target)}})
+},{threshold:.08})
+document.querySelectorAll('[data-anim]').forEach(el=>gIO.observe(el))
+
+/* ── COUNTER ── */
+function animCount(el){
+  const t=parseInt(el.dataset.count),s=el.dataset.suf||''
+  if(isNaN(t))return
+  let c=0;const inc=t/(1800/16)
+  const tm=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+s;if(c>=t)clearInterval(tm)},16)
+}
+const cIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-count]').forEach(animCount);cIO.unobserve(e.target)}})
+},{threshold:.4})
+document.querySelectorAll('.stat-band,.hero-stats').forEach(el=>cIO.observe(el))
+
+/* ── TESTIMONIAL SLIDER ── */
+let testiIdx=0
+const testiPerView=()=>window.innerWidth<600?1:window.innerWidth<900?2:3
+function moveTesti(dir){
+  const items=document.querySelectorAll('.testi-card').length
+  const perV=testiPerView()
+  const maxIdx=items-perV
+  testiIdx=Math.max(0,Math.min(testiIdx+dir,maxIdx))
+  updateTesti()
+}
+function goTesti(i){
+  testiIdx=i*testiPerView()
+  const items=document.querySelectorAll('.testi-card').length
+  testiIdx=Math.min(testiIdx,items-testiPerView())
+  updateTesti()
+}
+function updateTesti(){
+  const track=document.getElementById('testiTrack')
+  if(!track)return
+  const card=track.querySelector('.testi-card')
+  if(!card)return
+  const w=card.offsetWidth+24
+  track.style.transform=`translateX(-${testiIdx*w}px)`
+  document.querySelectorAll('.testi-dot').forEach((d,i)=>{
+    d.classList.toggle('on',Math.floor(testiIdx/testiPerView())===i)
+  })
+}
+// Auto-advance testimonials
+setInterval(()=>{ const items=document.querySelectorAll('.testi-card').length; const max=items-testiPerView(); if(testiIdx>=max) testiIdx=-1; moveTesti(1) },5000)
+
+/* ── FORM ── */
+function handleForm(e){
+  e.preventDefault()
+  const btn=e.target.querySelector('.f-sub')
+  btn.textContent='✓ Message Sent! We\'ll be in touch soon.'
+  btn.style.background='#14a860';btn.disabled=true
+  setTimeout(()=>{btn.textContent='Send Message →';btn.style.background='';btn.disabled=false;e.target.reset()},4000)
+}
+
+/* prevent hash */
+document.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()))
+</script>
+</body>
+</html>
